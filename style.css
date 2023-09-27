@@ -11,14 +11,20 @@ html {
 :root {
     --pink: #ff3258;
     --white: #ffffff;
+    --black: #010101;
 
     --nav-height: 8rem;
+
+    --fs-h1: 7.5rem;
+    --fs-h2: 6rem;
 }
 
 body {
     font-family: "Jost", sans-serif;
     color: var(--white);
     font-size: 1.8rem;
+    font-weight: 300;
+    background-color: var(--black);
 }
 
 a {
@@ -33,10 +39,35 @@ a {
     font-size: 2.2rem;
 }
 
+section {
+    padding: 10rem 0;
+}
+
 .row {
     max-width: 1180px;
     margin: 0 auto;
+}
 
+h1,
+h2 {
+    font-weight: 400;
+}
+
+h1 {
+    font-size: var(--fs-h1);
+}
+
+h2 {
+    font-size: var(--fs-h2);
+}
+
+h2::after {
+    content: "";
+    display: block;
+    height: 0.3rem;
+    width: 12rem;
+    margin-top: 1rem;
+    background-color: var(--pink);
 }
 
 header {
@@ -74,8 +105,4 @@ nav a {
 .header-text-container p {
     font-size: 2.4rem;
     margin: 1rem 0 3rem;
-}
-
-h1 {
-    font-size: 7.5rem;
 }
