@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="text-center py-24 px-6">
+    <section className="text-center py-24 px-6 relative">
       <h1 className="text-4xl md:text-5xl font-bold">
         Hi, I'm <span className="text-accent">Vishal</span> — I build intelligent systems.
       </h1>
