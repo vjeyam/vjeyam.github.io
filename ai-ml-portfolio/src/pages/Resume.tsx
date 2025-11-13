@@ -14,8 +14,6 @@ export default function Resume() {
         <span className="divider">|</span>
         <a href="mailto:jeyamvishal5@gmail.com">jeyamvishal5@gmail.com</a>
         <span className="divider">|</span>
-        <a href="tel:4792834690">(479) 283-4690</a>
-        <span className="divider">|</span>
         <a href="https://www.linkedin.com/in/vjeyam" target="_blank">linkedin.com/in/vjeyam</a>
         <span className="divider">|</span>
         <a href="https://github.com/vjeyam" target="_blank">github.com/vjeyam</a>

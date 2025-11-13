@@ -2,22 +2,16 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
-    title: "LLM Chatbot",
-    desc: "Fine-tuned a large language model for domain-specific Q&A.",
-    tech: ["PyTorch", "Transformers", "Python"],
-    link: "https://github.com",
+    title: "WSU Wheat Yield Prediction",
+    desc: "Deep learning pipeline predicting wheat yield using UAV multispectral imagery, vegetation indices, and geospatial field data.",
+    tech: ["PyTorch", "Python", "NumPy", "Pandas", "Geospatial Data"],
+    link: "https://github.com/vjeyam/WSU-Wheat-Predictions",
   },
   {
-    title: "Image Classifier",
-    desc: "Trained a CNN achieving 94% accuracy on custom dataset.",
-    tech: ["TensorFlow", "CNN", "Python"],
-    link: "https://github.com",
-  },
-  {
-    title: "ML Pipeline",
-    desc: "End-to-end ML system with data ingestion → training → API.",
-    tech: ["Docker", "FastAPI", "scikit-learn"],
-    link: "https://github.com",
+    title: "US Accident Severity Prediction",
+    desc: "Machine learning model classifying accident severity using a nationwide dataset with millions of real traffic records.",
+    tech: ["Scikit-learn", "XGBoost", "Python", "Pandas", "Jupyter"],
+    link: "https://github.com/vjeyam/us-accident-severity-prediction",
   },
 ];
 
