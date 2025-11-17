@@ -27,3 +27,4 @@ dist-ssr
 model/output/
 model/trained-model/
 public/onnx-model/
+.env

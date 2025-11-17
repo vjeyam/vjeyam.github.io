@@ -1,38 +1,59 @@
 import { useState } from "react";
+import { generateText } from "../model";
+import "../Chatbot.css"; // <- relative import to the stylesheet in src/
+
+interface Message {
+  sender: "user" | "bot";
+  text: string;
+}
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<{ sender: string; text: string }[]>(
-    []
-  );
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function sendMessage() {
-    if (!input.trim()) return;
+    if (!input.trim() || loading) return;
 
-    const userMessage = { sender: "user", text: input };
+    const userMessage: Message = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
 
-    const reply = await window.generateText(input);
+    try {
+      const reply = await generateText(input);
 
-    setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
-    setLoading(false);
+      const botMessage: Message = {
+        sender: "bot",
+        text: reply || "Sorry, I couldn’t find an answer.",
+      };
+
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error(error);
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "⚠️ Error connecting to the AI server." },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
   }
 
   return (
     <>
-      {/* Floating Chat Button (matching FloatingIcons style) */}
+      {/* Floating Chat Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="
-          fixed bottom-6 left-6 z-50
-          bg-neutral-900/70 backdrop-blur-xl
-          p-4 rounded-full border border-neutral-700 shadow-xl
-          hover:bg-neutral-800 transition
-        "
+        className="chat-float-button fixed bottom-6 left-6 z-50"
         title="Chat"
       >
         💬
@@ -42,33 +63,21 @@ export default function Chatbot() {
       {open && (
         <div
           className="
-            fixed bottom-24 left-6 z-50
-            w-80
-            bg-neutral-900/80 backdrop-blur-xl
-            border border-neutral-700 shadow-2xl
-            rounded-2xl p-4 flex flex-col
+            chatbot-window fixed bottom-24 left-6 z-50
+            w-80 h-[32rem] rounded-2xl border border-neutral-700
+            p-4 flex flex-col bg-neutral-900/90
           "
         >
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto mb-3 max-h-96 pr-1">
+          <div className="chat-scroll flex-1 mb-3 flex flex-col">
             {messages.map((msg, i) => (
-              <div
-                key={i}
-                className={`
-                  my-2 p-2 rounded-xl max-w-[75%] text-sm
-                  ${
-                    msg.sender === "user"
-                      ? "ml-auto bg-blue-600/60 text-white"
-                      : "mr-auto bg-neutral-800/70 text-gray-200"
-                  }
-                `}
-              >
+              <div key={i} className={`chat-message ${msg.sender}`}>
                 {msg.text}
               </div>
             ))}
 
             {loading && (
-              <div className="my-2 mr-auto p-2 rounded-xl bg-neutral-800/70 text-gray-400 text-sm italic">
+              <div className="chat-message bot loading">
                 AI is thinking...
               </div>
             )}
@@ -79,22 +88,15 @@ export default function Chatbot() {
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="
-                flex-1 p-2 rounded-xl
-                bg-neutral-800/60 border border-neutral-700
-                text-gray-200 placeholder-gray-500
-                outline-none
-              "
+              onKeyDown={handleKeyDown}
+              className="chat-input"
               placeholder="Type a message..."
             />
 
             <button
               onClick={sendMessage}
-              className="
-                px-4 py-2 rounded-xl
-                bg-blue-600 text-white
-                hover:bg-blue-500 transition
-              "
+              disabled={loading}
+              className="chat-send"
             >
               ➤
             </button>

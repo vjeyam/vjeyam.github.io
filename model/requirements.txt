@@ -1,7 +1,0 @@
-transformers
-datasets
-accelerate
-onnx
-onnxruntime
-optimum[exporters]
-torch
