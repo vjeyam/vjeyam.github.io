@@ -30,3 +30,8 @@ body {
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
 }
+
+.chatbot-button:hover {
+  transform: scale(1.05);
+  transition: 0.15s ease-in-out;
+}

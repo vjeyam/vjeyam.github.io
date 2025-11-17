@@ -6,13 +6,15 @@ import Projects from "./pages/Projects";
 import Resume from "./pages/Resume";
 import ContactPage from "./pages/ContactPage";
 import FloatingIcons from "./components/FloatingIcons";
+import Chatbot from "./components/Chatbot";
 
 export default function App() {
   return (
     <div className="bg-black text-white min-h-screen">
       <Navbar />
 
-      <FloatingIcons /> 
+      <FloatingIcons />
+      <Chatbot />
 
       <Routes>
         <Route path="/" element={<Home />} />
