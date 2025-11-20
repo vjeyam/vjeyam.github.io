@@ -18,11 +18,7 @@ if (!process.env.HF_TOKEN) {
   console.error("Missing HF_TOKEN in .env file");
   process.exit(1);
 }
-if (!process.env.HF_API_URL) {
-  console.error("Missing HF_API_URL in .env file");
-  process.exit(1);
-}
-console.log("[ENV CHECK] Using model:", process.env.HF_API_URL);
+console.log("[ENV CHECK] Token configured ✓");
 
 // Rate Limiting (5 requests per IP per day)
 const limiter = rateLimit({
@@ -32,7 +28,7 @@ const limiter = rateLimit({
 });
 app.use("/api/chat", limiter);
 
-// Chat Endpoint
+// Chat Endpoint - Using OpenAI-compatible API
 app.post("/api/chat", async (req, res) => {
   const { question } = req.body;
 
@@ -41,38 +37,51 @@ app.post("/api/chat", async (req, res) => {
     return res.status(400).json({ error: "Invalid input" });
   }
 
-  // Add contextual info for better responses
-  const now = new Date();
-  const dateContext = `Today is ${now.toDateString()} at ${now.toLocaleTimeString()}.`;
-  const fullPrompt = `${dateContext}\nUser: ${question}`;
-
   try {
-    const response = await fetch(process.env.HF_API_URL, {
+    const response = await fetch("https://router.huggingface.co/v1/chat/completions", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${process.env.HF_TOKEN}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        inputs: fullPrompt,
+        model: "meta-llama/Llama-3.2-3B-Instruct",
+        messages: [
+          {
+            role: "system",
+            content: "You are a helpful AI assistant for Vishal Jeyam's portfolio website. Answer questions about AI, machine learning, and technology concisely and professionally."
+          },
+          {
+            role: "user",
+            content: question
+          }
+        ],
+        max_tokens: 500,
+        temperature: 0.7, 
       }),
     });
+
+    // Log the full response for debugging
+    const responseText = await response.text();
+    console.log("HF API Status:", response.status);
+    console.log("HF API Response:", responseText.substring(0, 200));
 
     if (!response.ok) {
       console.error(`Hugging Face API error: ${response.status}`);
       return res
         .status(response.status)
-        .json({ error: "Failed to connect to Hugging Face API." });
+        .json({ error: "Failed to connect to Hugging Face API.", details: responseText });
     }
 
-    const data = await response.json();
+    const data = JSON.parse(responseText);
 
-    // Handle unexpected or empty responses
-    if (!data || !Array.isArray(data) || !data[0]?.generated_text) {
+    // Extract the assistant's message from the OpenAI-style response
+    if (data.choices && data.choices[0]?.message?.content) {
+      // Return in the old format for compatibility with your frontend
+      return res.json([{ generated_text: data.choices[0].message.content }]);
+    } else {
       return res.json([{ generated_text: "Sorry, I couldn't find an answer." }]);
     }
-
-    res.json(data);
   } catch (err) {
     console.error("Server error:", err);
     res.status(500).json({ error: "Internal server error" });
@@ -92,5 +101,20 @@ app.get(/.*/, (_, res) => {
 });
 
 // Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+const PORT = process.env.PORT || 5001;
+const server = app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`📍 Access at http://localhost:${PORT}`);
+  console.log('Press Ctrl+C to stop');
+});
+
+server.on('error', (err) => {
+  console.error('❌ Server failed to start:', err);
+  process.exit(1);
+});
+
+// Keep the process alive
+process.on('SIGINT', () => {
+  console.log('\n👋 Server shutting down...');
+  process.exit(0);
+});

@@ -24,7 +24,5 @@ dist-ssr
 *.sw?
 
 # Chatbot files
-model/output/
-model/trained-model/
-public/onnx-model/
 .env
+test-hf.js
