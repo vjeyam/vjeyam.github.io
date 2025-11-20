@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { generateText } from "../model";
-import "../Chatbot.css"; // <- relative import to the stylesheet in src/
+import "../Chatbot.css";
+import chatbotIcon from "/chatbot.png";
 
 interface Message {
   sender: "user" | "bot";
@@ -56,7 +57,11 @@ export default function Chatbot() {
         className="chat-float-button fixed bottom-6 left-6 z-50"
         title="Chat"
       >
-        💬
+        <img
+          src={chatbotIcon}
+          alt="Chatbot Icon"
+          className="w-12 h-12 object-contain"
+        />
       </button>
 
       {/* Chat Window */}
