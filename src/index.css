@@ -9,13 +9,13 @@ body {
 }
 
 .text-accent {
-  color: #60a5fa; /* light blue */
+  color: #60a5fa;
 }
 
 .scroll-top-button {
   position: fixed;
   right: 2.4rem;
-  bottom: 17rem; /* ⬆️ raise above floating icons */
+  bottom: 17rem;
   z-index: 9999;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -29,4 +29,9 @@ body {
 .scroll-top-button:hover {
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
+}
+
+.chatbot-button:hover {
+  transform: scale(1.05);
+  transition: 0.15s ease-in-out;
 }

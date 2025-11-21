@@ -19,7 +19,7 @@ export default function Resume() {
         <a href="https://github.com/vjeyam" target="_blank">github.com/vjeyam</a>
       </div>
 
-      {/* -------- EDUCATION -------- */}
+      {/* Education */}
       <section className="resume-section">
         <h2 className="section-title">Education</h2>
         <div className="section-divider" />
@@ -43,7 +43,7 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* -------- SKILLS -------- */}
+      {/* Skills */}
       <section className="resume-section">
         <h2 className="section-title">Skills</h2>
         <div className="section-divider" />
@@ -62,7 +62,7 @@ export default function Resume() {
         </p>
       </section>
 
-      {/* -------- EXPERIENCE -------- */}
+      {/* Experience */}
       <section className="resume-section">
         <h2 className="section-title">Experience</h2>
         <div className="section-divider" />
@@ -138,7 +138,7 @@ export default function Resume() {
   );
 }
 
-/* ---------- Reusable Resume Item Component ---------- */
+/* Reusable Resume Item Component */
 function ResumeItem({
   role,
   org,
