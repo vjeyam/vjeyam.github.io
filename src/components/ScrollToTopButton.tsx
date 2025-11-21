@@ -6,7 +6,7 @@ export default function ScrollToTopButton() {
 
   useEffect(() => {
     const onScroll = () => {
-      setShow(window.scrollY > 300); // show after 300px
+      setShow(window.scrollY > 300);
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);

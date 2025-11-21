@@ -27,7 +27,7 @@ export default function Chatbot() {
 
       const botMessage: Message = {
         sender: "bot",
-        text: reply || "Sorry, I couldn’t find an answer.",
+        text: reply || "Sorry, I couldn't find an answer.",
       };
 
       setMessages((prev) => [...prev, botMessage]);
@@ -42,7 +42,7 @@ export default function Chatbot() {
     }
   }
 
-  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+  function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
@@ -82,20 +82,23 @@ export default function Chatbot() {
             ))}
 
             {loading && (
-              <div className="chat-message bot loading">
-                AI is thinking...
-              </div>
+              <div className="chat-message bot loading">AI is thinking...</div>
             )}
           </div>
 
           {/* Input */}
           <div className="flex items-center gap-2">
-            <input
+            <textarea
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                setInput(e.target.value);
+                e.target.style.height = "auto";
+                e.target.style.height = `${e.target.scrollHeight}px`;
+              }}
               onKeyDown={handleKeyDown}
               className="chat-input"
               placeholder="Type a message..."
+              rows={1}
             />
 
             <button

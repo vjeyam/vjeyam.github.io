@@ -9,5 +9,5 @@ export async function generateText(prompt: string): Promise<string> {
   });
 
   const data = await response.json();
-  return data.answer || data[0]?.generated_text || "Sorry, I couldn’t find an answer.";
+  return data.answer || data[0]?.generated_text || "Sorry, I couldn't find an answer.";
 }

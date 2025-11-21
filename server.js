@@ -22,7 +22,7 @@ console.log("[ENV CHECK] Token configured ✓");
 
 // Rate Limiting (5 requests per IP per day)
 const limiter = rateLimit({
-  windowMs: 24 * 60 * 60 * 1000, // 24 hours
+  windowMs: 24 * 60 * 60 * 1000,
   max: 5,
   message: { error: "Daily limit reached. Try again tomorrow." },
 });
