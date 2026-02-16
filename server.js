@@ -7,6 +7,13 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 dotenv.config();
+
+const HF_TOKEN = process.env.HF_TOKEN;
+if (!HF_TOKEN) {
+  console.error("Missing HF_TOKEN environment variable");
+  process.exit(1);
+}
+
 const app = express();
 
 // Middleware

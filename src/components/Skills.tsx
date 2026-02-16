@@ -1,7 +1,7 @@
 export default function Skills() {
   const categories = {
-    "Programming Languages": ["Python", "Java", "C++", "SQL", "JavaScript", "HTML/CSS"],
-    "Frameworks & Libraries": ["PyTorch", "TensorFlow", "Scikit-learn", "React"],
+    "Programming Languages": ["Python", "SQL", "C++", "JavaScript", "HTML/CSS"],
+    "Frameworks & Libraries": ["PyTorch", "Scikit-learn", "React"],
     "Data & Tools": ["Kafka", "Elasticsearch", "Spark", "Git/GitHub", "Tableau", "Pandas", "NumPy"],
     "Cloud & DevOps": ["Docker", "Kubernetes", "Azure"]
   }
