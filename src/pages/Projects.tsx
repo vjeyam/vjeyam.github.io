@@ -1,5 +1,11 @@
-import ProjectsSection from "../components/ProjectsSection";
+import FeaturedProjectsSection from "../components/FeaturedProjectsSection";
+import AllProjectsSection from "../components/AllProjectsSection";
 
 export default function Projects() {
-  return <ProjectsSection />;
+  return (
+    <>
+      <FeaturedProjectsSection />
+      <AllProjectsSection />
+    </>
+  );
 }

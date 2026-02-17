@@ -1,26 +1,18 @@
+type ProjectLink = {
+  label: string;
+  href: string;
+};
+
 interface Props {
   title: string;
   desc: string;
   tech: string[];
-  link: string;
-  presentation?: string;
-  kaggle?: string;
-  demo?: string;
+  links: ProjectLink[];
   result?: string;
   image?: string;
 }
 
-export default function ProjectCard({
-  title,
-  desc,
-  tech,
-  link,
-  presentation,
-  kaggle,
-  demo,
-  result,
-  image,
-}: Props) {
+export default function ProjectCard({ title, desc, tech, links, result, image }: Props) {
   return (
     <div className="border border-neutral-800 rounded-xl p-5 bg-neutral-900 hover:border-accent transition">
       {image && <img src={image} className="rounded-lg mb-4" alt={`${title} preview`} />}
@@ -39,48 +31,18 @@ export default function ProjectCard({
 
       <p className="text-xs text-neutral-500 mt-3">{tech.join(" · ")}</p>
 
-      <div className="mt-4 flex gap-4">
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-accent text-sm inline-block"
-        >
-          GitHub →
-        </a>
-
-        {presentation && (
+      <div className="mt-4 flex gap-4 flex-wrap">
+        {links.map((l) => (
           <a
-            href={presentation}
+            key={`${title}-${l.label}`}
+            href={l.href}
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent text-sm inline-block"
           >
-            Presentation →
+            {l.label} →
           </a>
-        )}
-
-        {kaggle && (
-          <a
-            href={kaggle}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent text-sm inline-block"
-          >
-            Kaggle →
-          </a>
-        )}
-
-        {demo && (
-          <a
-            href={demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent text-sm inline-block"
-          >
-            Live Demo →
-          </a>
-        )}
+        ))}
       </div>
     </div>
   );
