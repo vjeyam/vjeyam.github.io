@@ -26,3 +26,6 @@ dist-ssr
 # Chatbot files
 .env
 test-hf.js
+
+# Project dir
+public/projects

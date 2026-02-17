@@ -10,13 +10,12 @@ const TAGS = [
   "CV",
   "Deep Learning",
   "ETL",
-  "Dashboard",
   "Classification",
   "Regression",
   "Imbalanced Data",
 ];
 
-const SOURCES: Array<"all" | Project["source"]> = ["all", "github", "kaggle", "demo"];
+const SOURCES: Array<"all" | Project["source"]> = ["all", "github", "kaggle"];
 
 export default function AllProjectsSection() {
   const [query, setQuery] = useState("");
@@ -47,7 +46,7 @@ export default function AllProjectsSection() {
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search projects (e.g., XGBoost, NLP, dashboard)…"
+          placeholder="Search projects (e.g., XGBoost, NLP, Regression)…"
           className="w-full md:w-1/2 bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-2 text-sm outline-none focus:border-accent"
         />
 

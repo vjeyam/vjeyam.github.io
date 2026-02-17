@@ -11,7 +11,7 @@ type Project = {
   result?: string;
 
   // for filtering
-  source: "github" | "kaggle" | "demo";
+  source: "github" | "kaggle";
   tags: string[];
   featured?: boolean;
 };
@@ -51,10 +51,10 @@ const projects: Project[] = [
     result: "ETL + live dashboard",
     links: [
       { label: "GitHub", href: "https://github.com/vjeyam/sports-odds-pipeline" },
-      { label: "Live Demo", href: "https://sports-market-efficiency.streamlit.app/" },
+      { label: "Website", href: "https://sports-market-efficiency.streamlit.app/" },
     ],
-    source: "demo",
-    tags: ["ETL", "Analytics", "Dashboard", "APIs"],
+    source: "github",
+    tags: ["ETL", "Analytics", "APIs"],
     featured: true,
   },
 
@@ -105,13 +105,12 @@ const TAGS = [
   "CV",
   "Deep Learning",
   "ETL",
-  "Dashboard",
   "Classification",
   "Regression",
   "Imbalanced Data",
 ];
 
-const SOURCES: Array<"all" | Project["source"]> = ["all", "github", "kaggle", "demo"];
+const SOURCES: Array<"all" | Project["source"]> = ["all", "github", "kaggle"];
 
 export default function ProjectsSection() {
   const [query, setQuery] = useState("");
