@@ -7,7 +7,7 @@ export default function Hero() {
 
       <p className="mt-6 text-neutral-400 max-w-2xl mx-auto text-lg">
         I am a first-year Master's student in Computer Science at the University of Arkansas,
-        currently seeking Summer 2026 internships in Artificial Intelligence and Machine Learning.
+        currently seeking Summer 2026 internships in Data Science and Machine Learning.
       </p>
     </section>
   )
