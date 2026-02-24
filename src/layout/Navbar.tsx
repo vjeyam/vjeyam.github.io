@@ -6,6 +6,7 @@ export default function Navbar() {
       <Link to="/" className="font-semibold text-lg">Vishal Jeyam</Link>
 
       <div className="flex gap-6 text-sm">
+        <Link to="/"> Home </Link>
         <Link to="/projects">Projects</Link>
         <Link to="/resume">Resume</Link>
         <Link to="/contact">Contact</Link>
