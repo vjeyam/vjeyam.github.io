@@ -1,77 +1,93 @@
-/* Card */
-.project-card {
+.pc-card {
   border: 1px solid rgba(38, 38, 38, 1);
   background: rgba(23, 23, 23, 0.85);
-  border-radius: 16px;
-  padding: 20px;
+  border-radius: 18px;
+  padding: 18px;
 
-  transition:
-    transform 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
-.project-card:hover {
+.pc-card:hover {
   transform: translateY(-4px);
   border-color: rgba(167, 139, 250, 0.55);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
-/* Media */
-.project-media {
-  position: relative;
-  margin-bottom: 16px;
+/* Top row (result badge) */
+.pc-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 30px;
 }
 
-.project-mediaButton {
-  display: block;
+.pc-topSpacer {
+  flex: 1;
+}
+
+.pc-result {
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(63, 63, 70, 0.75);
+  background: rgba(0, 0, 0, 0.25);
+  color: rgba(229, 231, 235, 0.9);
+  white-space: nowrap;
+}
+
+/* Media */
+.pc-media {
+  position: relative;
+}
+
+.pc-mediaBtn {
   width: 100%;
-  text-align: left;
-  border: none;
-  background: transparent;
   padding: 0;
+  border: 0;
+  background: transparent;
   cursor: zoom-in;
 }
 
-.project-image {
+.pc-image {
   width: 100%;
-  height: 160px;
+  height: 170px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid rgba(63, 63, 70, 0.6);
 }
 
 /* Carousel nav */
-.project-nav {
+.pc-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(63, 63, 70, 0.7);
   color: rgba(255, 255, 255, 0.85);
-  border-radius: 10px;
-  padding: 6px 10px;
-  font-size: 14px;
+  border-radius: 12px;
+  padding: 8px 12px;
   cursor: pointer;
-
-  transition: background 160ms ease, transform 160ms ease, border-color 160ms ease;
+  transition: background 160ms ease, border-color 160ms ease;
 }
 
-.project-nav:hover {
+.pc-nav:hover {
   background: rgba(0, 0, 0, 0.65);
-  border-color: rgba(167, 139, 250, 0.45);
+  border-color: rgba(167, 139, 250, 0.5);
 }
 
-.project-navLeft {
+.pc-navLeft {
   left: 10px;
 }
 
-.project-navRight {
+.pc-navRight {
   right: 10px;
 }
 
-/* Dots */
-.project-dots {
+.pc-dots {
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -80,84 +96,78 @@
   gap: 6px;
 }
 
-.project-dot {
+.pc-dot {
   width: 6px;
   height: 6px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.25);
 }
 
-.project-dot.isActive {
+.pc-dot.isActive {
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* Text */
-.project-topRow {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.project-title {
+/* Title spans full width */
+.pc-title {
+  margin: 2px 0 0;
   font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.92);
 }
 
-.project-badge {
+/* Tags under title */
+.pc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.pc-tag {
   font-size: 0.75rem;
   padding: 6px 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(63, 63, 70, 0.7);
-  color: rgba(229, 231, 235, 0.9);
-  white-space: nowrap;
-  background: rgba(0, 0, 0, 0.25);
+  border-radius: 999px;
+  border: 1px solid rgba(38, 38, 38, 1);
+  background: rgba(0, 0, 0, 0.18);
+  color: rgba(229, 231, 235, 0.82);
 }
 
-.project-desc {
-  margin-top: 10px;
+/* Description */
+.pc-desc {
+  margin: 2px 0 0;
   color: rgba(255, 255, 255, 0.62);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
-.project-tech {
-  margin-top: 12px;
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.45);
-}
-
-/* Links */
-.project-links {
-  margin-top: 16px;
+/* Links at bottom */
+.pc-links {
   display: flex;
-  gap: 16px;
   flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 6px;
 }
 
-.project-link {
+.pc-link {
   font-size: 0.875rem;
   color: #60a5fa;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-
   transition: transform 160ms ease, color 160ms ease;
 }
 
-.project-link:hover {
+.pc-link:hover {
   transform: translateY(-1px);
   color: rgba(167, 139, 250, 0.95);
 }
 
-/* Modal overlay */
-.project-modalOverlay {
+/* Modal (reuse your previous modal styles) */
+.pc-modalOverlay {
   position: fixed;
   inset: 0;
   z-index: 50;
-
   background: rgba(0, 0, 0, 0.72);
   display: flex;
   align-items: center;
@@ -165,13 +175,13 @@
   padding: 16px;
 }
 
-.project-modal {
+.pc-modal {
   position: relative;
   width: 100%;
   max-width: 1024px;
 }
 
-.project-modalImage {
+.pc-modalImage {
   width: 100%;
   max-height: 80vh;
   object-fit: contain;
@@ -180,31 +190,20 @@
   background: rgba(3, 7, 18, 0.9);
 }
 
-/* Modal close */
-.project-close {
+.pc-close {
   position: absolute;
   top: -10px;
   right: -10px;
-
   width: 38px;
   height: 38px;
   border-radius: 999px;
-
   background: rgba(23, 23, 23, 0.9);
   border: 1px solid rgba(63, 63, 70, 0.8);
   color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
-
-  transition: transform 160ms ease, background 160ms ease;
 }
 
-.project-close:hover {
-  transform: translateY(-1px);
-  background: rgba(38, 38, 38, 0.9);
-}
-
-/* Modal nav */
-.project-modalNav {
+.pc-modalNav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -214,24 +213,17 @@
   border-radius: 12px;
   padding: 10px 14px;
   cursor: pointer;
-
-  transition: background 160ms ease, border-color 160ms ease;
 }
 
-.project-modalNav:hover {
-  background: rgba(0, 0, 0, 0.65);
-  border-color: rgba(167, 139, 250, 0.5);
-}
-
-.project-modalNavLeft {
+.pc-modalNavLeft {
   left: 10px;
 }
 
-.project-modalNavRight {
+.pc-modalNavRight {
   right: 10px;
 }
 
-.project-counter {
+.pc-counter {
   margin-top: 10px;
   text-align: center;
   font-size: 0.75rem;

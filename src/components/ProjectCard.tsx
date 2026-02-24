@@ -13,6 +13,8 @@ interface Props {
   links: ProjectLink[];
   result?: string;
   images?: string[];
+  // Optional if you want separate tags from tech:
+  // tags?: string[];
 }
 
 export default function ProjectCard({ title, desc, tech, links, result, images }: Props) {
@@ -64,20 +66,26 @@ export default function ProjectCard({ title, desc, tech, links, result, images }
 
   return (
     <>
-      <div className="project-card">
-        {/* Image carousel */}
+      <article className="pc-card">
+        {/* Result badge row */}
+        <div className="pc-top">
+          <div className="pc-topSpacer" />
+          {result && <span className="pc-result">{result}</span>}
+        </div>
+
+        {/* Image */}
         {hasImages && (
-          <div className="project-media">
+          <div className="pc-media">
             <button
               type="button"
               onClick={open}
-              className="project-mediaButton"
+              className="pc-mediaBtn"
               aria-label={`Open ${title} image`}
             >
               <img
                 src={currentSrc}
                 alt={`${title} screenshot`}
-                className="project-image"
+                className="pc-image"
                 loading="lazy"
               />
             </button>
@@ -87,27 +95,23 @@ export default function ProjectCard({ title, desc, tech, links, result, images }
                 <button
                   type="button"
                   onClick={prev}
-                  className="project-nav project-navLeft"
+                  className="pc-nav pc-navLeft"
                   aria-label="Previous image"
                 >
                   ‹
                 </button>
-
                 <button
                   type="button"
                   onClick={next}
-                  className="project-nav project-navRight"
+                  className="pc-nav pc-navRight"
                   aria-label="Next image"
                 >
                   ›
                 </button>
 
-                <div className="project-dots" aria-hidden="true">
+                <div className="pc-dots" aria-hidden="true">
                   {images!.map((_, i) => (
-                    <span
-                      key={i}
-                      className={`project-dot ${i === index ? "isActive" : ""}`}
-                    />
+                    <span key={i} className={`pc-dot ${i === index ? "isActive" : ""}`} />
                   ))}
                 </div>
               </>
@@ -115,53 +119,54 @@ export default function ProjectCard({ title, desc, tech, links, result, images }
           </div>
         )}
 
-        <div className="project-topRow">
-          <h3 className="project-title">{title}</h3>
+        {/* Title (full width) */}
+        <h3 className="pc-title">{title}</h3>
 
-          {result && <span className="project-badge">{result}</span>}
+        {/* Tags row (using tech as chips) */}
+        <div className="pc-tags">
+          {tech.slice(0, 6).map((t) => (
+            <span key={t} className="pc-tag">
+              {t}
+            </span>
+          ))}
         </div>
 
-        <p className="project-desc">{desc}</p>
+        {/* Description */}
+        <p className="pc-desc">{desc}</p>
 
-        <p className="project-tech">{tech.join(" · ")}</p>
-
-        <div className="project-links">
+        {/* Links */}
+        <div className="pc-links">
           {links.map((l) => (
             <a
               key={`${title}-${l.label}`}
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="project-link"
+              className="pc-link"
             >
               {l.label} <span aria-hidden="true">→</span>
             </a>
           ))}
         </div>
-      </div>
+      </article>
 
-      {/* Lightbox modal */}
+      {/* Lightbox */}
       {isOpen && hasImages && (
         <div
-          className="project-modalOverlay"
+          className="pc-modalOverlay"
           onClick={close}
           role="dialog"
           aria-modal="true"
           aria-label={`${title} image viewer`}
         >
-          <div className="project-modal" onClick={(e) => e.stopPropagation()}>
+          <div className="pc-modal" onClick={(e) => e.stopPropagation()}>
             <img
               src={currentSrc}
               alt={`${title} screenshot expanded`}
-              className="project-modalImage"
+              className="pc-modalImage"
             />
 
-            <button
-              type="button"
-              onClick={close}
-              className="project-close"
-              aria-label="Close"
-            >
+            <button type="button" onClick={close} className="pc-close" aria-label="Close">
               ✕
             </button>
 
@@ -170,7 +175,7 @@ export default function ProjectCard({ title, desc, tech, links, result, images }
                 <button
                   type="button"
                   onClick={prev}
-                  className="project-modalNav project-modalNavLeft"
+                  className="pc-modalNav pc-modalNavLeft"
                   aria-label="Previous image"
                 >
                   ‹
@@ -178,13 +183,13 @@ export default function ProjectCard({ title, desc, tech, links, result, images }
                 <button
                   type="button"
                   onClick={next}
-                  className="project-modalNav project-modalNavRight"
+                  className="pc-modalNav pc-modalNavRight"
                   aria-label="Next image"
                 >
                   ›
                 </button>
 
-                <div className="project-counter">
+                <div className="pc-counter">
                   {index + 1} / {images.length} (use ← → keys)
                 </div>
               </>

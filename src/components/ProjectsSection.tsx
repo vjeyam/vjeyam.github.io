@@ -1,102 +1,9 @@
 import { useMemo, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import "../styles/ProjectsSection.css";
-type ProjectLink = { label: string; href: string };
 
-type Project = {
-  title: string;
-  desc: string;
-  tech: string[];
-  links: ProjectLink[];
-  result?: string;
-
-  // for filtering
-  source: "github" | "kaggle";
-  tags: string[];
-  featured?: boolean;
-};
-
-const projects: Project[] = [
-  // Featured 
-  {
-    title: "WSU Wheat Yield Prediction",
-    desc: "Multispectral computer vision pipeline predicting wheat health from UAV imagery using vegetation indices and YOLOv8-based detection.",
-    tech: ["PyTorch", "YOLOv8", "Multispectral Imaging", "Feature Engineering"],
-    result: "80–82% test accuracy",
-    links: [
-      { label: "GitHub", href: "https://github.com/vjeyam/WSU-Wheat-Predictions" },
-      { label: "Presentation", href: "/pdfs/wsu-wheat.pdf" },
-    ],
-    source: "github",
-    tags: ["CV", "Deep Learning", "Classification", "Research"],
-    featured: true,
-  },
-  {
-    title: "US Accident Severity Prediction",
-    desc: "Multi-class classification on 1.5M+ US traffic records using feature engineering and XGBoost, addressing heavy class imbalance.",
-    tech: ["Scikit-learn", "XGBoost", "Python", "Pandas"],
-    result: "AUROC 0.91 (macro)",
-    links: [
-      { label: "GitHub", href: "https://github.com/vjeyam/us-accident-severity-prediction" },
-      { label: "Kaggle Dataset", href: "https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents" },
-    ],
-    source: "github",
-    tags: ["Tabular", "Classification", "Imbalanced Data"],
-    featured: true,
-  },
-  {
-    title: "Sports Market Efficiency Pipeline",
-    desc: "End-to-end ETL + analytics system ingesting live sportsbook odds and game results into SQLite, powering a Streamlit dashboard for close-line, calibration, and strategy simulation.",
-    tech: ["Python", "ETL", "SQLite", "APIs", "Streamlit"],
-    result: "ETL + live dashboard",
-    links: [
-      { label: "GitHub", href: "https://github.com/vjeyam/sports-odds-pipeline" },
-      { label: "Website", href: "https://sports-market-efficiency.streamlit.app/" },
-    ],
-    source: "github",
-    tags: ["ETL", "Analytics", "APIs"],
-    featured: true,
-  },
-
-  // Kaggle competition notebooks
-  {
-    title: "Heart Disease Prediction (Kaggle)",
-    desc: "Binary classification model predicting heart disease risk from clinical features using ROC-AUC evaluation.",
-    tech: ["Python", "Scikit-learn", "Tabular ML"],
-    result: "ROC-AUC 0.951",
-    links: [
-      { label: "Notebook", href: "https://www.kaggle.com/code/vishaljeyam/predicting-heart-disease" },
-      { label: "Competition", href: "https://www.kaggle.com/competitions/playground-series-s6e2" },
-    ],
-    source: "kaggle",
-    tags: ["Tabular", "Classification"],
-  },
-  {
-    title: "Disaster Tweet Classification (Kaggle)",
-    desc: "NLP classifier identifying real disaster tweets using text preprocessing and F1-optimized evaluation.",
-    tech: ["Python", "NLP", "Scikit-learn"],
-    result: "F1 0.805",
-    links: [
-      { label: "Notebook", href: "https://www.kaggle.com/code/vishaljeyam/nlp-disaster-tweets" },
-      { label: "Competition", href: "https://www.kaggle.com/competitions/nlp-getting-started" },
-    ],
-    source: "kaggle",
-    tags: ["NLP", "Classification"],
-  },
-
-  // Kaggle dataset notebook (not a competition)
-  {
-    title: "Telco Customer Churn (Kaggle)",
-    desc: "Churn prediction on telecom customer data with preprocessing, feature engineering, and classification modeling.",
-    tech: ["Python", "Pandas", "Scikit-learn"],
-    links: [
-      { label: "Notebook", href: "https://www.kaggle.com/code/vishaljeyam/telecommunication-churn-preds" },
-      { label: "Dataset", href: "https://www.kaggle.com/datasets/blastchar/telco-customer-churn/data" },
-    ],
-    source: "kaggle",
-    tags: ["Tabular", "Classification"],
-  },
-];
+import { projects } from "../data/projects";
+import type { Project } from "../data/projects";
 
 const TAGS = [
   "All",
@@ -108,6 +15,11 @@ const TAGS = [
   "Classification",
   "Regression",
   "Imbalanced Data",
+  // "Research",
+  // "Analytics",
+  // "APIs",
+  // "Visualization",
+  // "Model Comparison",
 ];
 
 const SOURCES: Array<"all" | Project["source"]> = ["all", "github", "kaggle"];
