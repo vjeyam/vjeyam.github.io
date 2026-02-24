@@ -10,7 +10,7 @@ import Chatbot from "./components/Chatbot";
 
 export default function App() {
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="text-white min-h-screen">
       <Navbar />
 
       <FloatingIcons />

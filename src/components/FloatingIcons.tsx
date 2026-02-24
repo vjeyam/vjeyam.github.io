@@ -1,21 +1,14 @@
 import { ArrowDownToLine, Github, Linkedin, Mail } from "lucide-react";
+import "../styles/FloatingIcons.css";
 
 export default function FloatingIcons() {
   return (
-    <div
-      className="
-        fixed bottom-6 right-6 z-50
-        flex flex-col gap-4
-        bg-neutral-900/70 backdrop-blur-xl
-        p-4 rounded-2xl border border-neutral-700
-        shadow-xl
-      "
-    >
+    <div className="floating-icons">
       {/* Download Resume */}
       <a
         href="/Resume.pdf"
         download
-        className="p-2 rounded-lg hover:bg-neutral-800 transition text-blue-300"
+        className="floating-icon accent-blue"
         title="Download Resume"
       >
         <ArrowDownToLine size={22} strokeWidth={1.75} />
@@ -26,7 +19,7 @@ export default function FloatingIcons() {
         href="https://github.com/vjeyam"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 rounded-lg hover:bg-neutral-800 transition text-gray-300"
+        className="floating-icon"
         title="GitHub"
       >
         <Github size={22} strokeWidth={1.75} />
@@ -37,7 +30,7 @@ export default function FloatingIcons() {
         href="https://www.linkedin.com/in/vjeyam/"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 rounded-lg hover:bg-neutral-800 transition text-blue-300"
+        className="floating-icon accent-blue"
         title="LinkedIn"
       >
         <Linkedin size={22} strokeWidth={1.75} />
@@ -46,7 +39,7 @@ export default function FloatingIcons() {
       {/* Email */}
       <a
         href="mailto:jeyamvishal5@gmail.com"
-        className="p-2 rounded-lg hover:bg-neutral-800 transition text-green-300"
+        className="floating-icon accent-green"
         title="Email Me"
       >
         <Mail size={22} strokeWidth={1.75} />

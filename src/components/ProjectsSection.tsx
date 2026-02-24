@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import ProjectCard from "./ProjectCard";
-
+import "../styles/ProjectsSection.css";
 type ProjectLink = { label: string; href: string };
 
 type Project = {
@@ -127,43 +127,40 @@ export default function ProjectsSection() {
       .filter((p) => (tag === "All" ? true : p.tags.includes(tag)))
       .filter((p) => {
         if (!q) return true;
-        const haystack = `${p.title} ${p.desc} ${p.tech.join(" ")} ${p.tags.join(" ")}`.toLowerCase();
+        const haystack =
+          `${p.title} ${p.desc} ${p.tech.join(" ")} ${p.tags.join(" ")}`.toLowerCase();
         return haystack.includes(q);
       });
   }, [query, tag, source]);
 
   return (
-    <section className="py-20 px-6 max-w-6xl mx-auto">
+    <section className="projects-main">
       {/* Featured */}
-      <h2 className="text-2xl font-semibold mb-10">Featured Projects</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 className="projects-heading">Featured Projects</h2>
+      <div className="projects-grid">
         {featured.map((p) => (
           <ProjectCard key={p.title} {...p} />
         ))}
       </div>
 
-      {/* All projects with filters */}
-      <div className="mt-16">
-        <h2 className="text-2xl font-semibold mb-6">All Projects</h2>
+      {/* All */}
+      <div className="projects-all">
+        <h2 className="projects-heading">All Projects</h2>
 
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-8">
+        <div className="projects-toolbar">
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search projects (e.g., XGBoost, NLP, dashboard)…"
-            className="w-full md:w-1/2 bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-2 text-sm outline-none focus:border-accent"
+            className="projects-search"
           />
 
-          <div className="flex gap-2 flex-wrap">
+          <div className="projects-pills">
             {SOURCES.map((s) => (
               <button
                 key={s}
                 onClick={() => setSource(s)}
-                className={`text-xs px-3 py-1 rounded-full border transition ${
-                  source === s
-                    ? "border-accent text-accent"
-                    : "border-neutral-800 text-neutral-400 hover:border-neutral-700"
-                }`}
+                className={`projects-pill ${source === s ? "active" : ""}`}
               >
                 {s === "all" ? "All Sources" : s.toUpperCase()}
               </button>
@@ -171,16 +168,12 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        <div className="flex gap-2 flex-wrap mb-8">
+        <div className="projects-pills projects-tags">
           {TAGS.map((t) => (
             <button
               key={t}
               onClick={() => setTag(t)}
-              className={`text-xs px-3 py-1 rounded-full border transition ${
-                tag === t
-                  ? "border-accent text-accent"
-                  : "border-neutral-800 text-neutral-400 hover:border-neutral-700"
-              }`}
+              className={`projects-pill ${tag === t ? "active" : ""}`}
             >
               {t}
             </button>
@@ -188,9 +181,9 @@ export default function ProjectsSection() {
         </div>
 
         {filtered.length === 0 ? (
-          <p className="text-neutral-400">No projects match your filters.</p>
+          <p className="projects-empty">No projects match your filters.</p>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="projects-grid">
             {filtered.map((p) => (
               <ProjectCard key={p.title} {...p} />
             ))}

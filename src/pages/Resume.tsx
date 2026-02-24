@@ -1,5 +1,5 @@
 import ScrollToTopButton from "../components/ScrollToTopButton";
-import "./Resume.css";
+import "../styles/Resume.css";
 import "../index.css";
 
 function ResumeItem({

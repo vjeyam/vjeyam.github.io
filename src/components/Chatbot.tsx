@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { generateText } from "../model";
-import "../Chatbot.css";
+import "../styles/Chatbot.css";
 import chatbotIcon from "/chatbot.png";
 
 interface Message {
