@@ -19,8 +19,8 @@ export const projects: Project[] = [
     desc: "Multispectral computer vision pipeline predicting wheat health from UAV imagery using vegetation indices and YOLOv8-based detection.",
     tech: ["PyTorch", "YOLOv8", "Multispectral Imaging", "Feature Engineering"],
     images: [
-      "/projects/wheat/panel/val/val_batch0_pred.jpg",
-      "/projects/wheat/wheat/val/val_batch0_pred.jpg",
+      "/panel-preds.jpg",
+      "/wheat-preds.jpg",
     ],
     result: "80-82% test accuracy",
     links: [
@@ -37,8 +37,8 @@ export const projects: Project[] = [
     desc: "Multi-class classification on 1.5M+ US traffic records using feature engineering and XGBoost, addressing heavy class imbalance.",
     tech: ["Scikit-learn", "XGBoost", "Python", "Pandas"],
     images: [
-      "/projects/accident/roc-curve.png",
-      "/projects/accident/val-plots.png",
+      "/accident-roc-curve.png",
+      "/accident-val-plots.png",
     ],
     result: "AUROC 0.91 (macro)",
     links: [
@@ -55,8 +55,8 @@ export const projects: Project[] = [
     desc: "End-to-end ETL + analytics system ingesting live sportsbook odds and game results into SQLite, powering a Streamlit dashboard for close-line, calibration, and strategy simulation.",
     tech: ["Python", "ETL", "SQLite", "APIs", "Streamlit"],
     images: [
-      "/projects/sports-odds/demo-0.png",
-      "/projects/sports-odds/demo-1.png",
+      "/demo-0.png",
+      "/demo-1.png",
     ],
     result: "ETL + live dashboard",
     links: [
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     title: "Heart Disease Prediction",
     desc: "Binary classification model predicting heart disease risk from clinical features using ROC-AUC evaluation.",
     tech: ["Python", "Scikit-learn", "Tabular ML"],
-    images: ["/projects/heart-pred/heart-disease-header.png"],
+    images: ["/heart-disease-header.png"],
     result: "ROC-AUC 0.951",
     links: [
       { label: "Notebook", href: "https://www.kaggle.com/code/vishaljeyam/predicting-heart-disease" },
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     title: "Disaster Tweet Classification",
     desc: "NLP classifier identifying real disaster tweets using text preprocessing and F1-optimized evaluation.",
     tech: ["Python", "NLP", "Scikit-learn"],
-    images: ["/projects/nlp/nlp-header.png"],
+    images: ["/nlp-header.png"],
     result: "F1 0.805",
     links: [
       { label: "Notebook", href: "https://www.kaggle.com/code/vishaljeyam/nlp-disaster-tweets" },
@@ -103,9 +103,9 @@ export const projects: Project[] = [
     desc: "Binary churn classification with model benchmarking (Logistic Regression, Random Forest, Gradient Boosting), evaluated via ROC-AUC and PR-AUC to handle class imbalance.",
     tech: ["Python", "Pandas", "Scikit-learn"],
     images: [
-      "/projects/churn/telco-header.jpg",
-      "/projects/churn/gb-roc.png",
-      "/projects/churn/model-comparison.png",
+      "/telco-header.jpg",
+      "/gb-roc.png",
+      "/model-comparison.png",
     ],
     result: "ROC-AUC 0.844",
     links: [
@@ -129,8 +129,8 @@ export const projects: Project[] = [
     ],
     // Optional images for your new lightbox system:
     images: [
-      "/projects/restaurant-inspector/chicago-risk-map.png",
-      "/projects/restaurant-inspector/roc-curve.png",
+      "/chicago-risk-map.png",
+      "/roc-curve.png",
     ],
     source: "github",
     tags: ["Tabular", "Classification", "Imbalanced Data", "Visualization"],
