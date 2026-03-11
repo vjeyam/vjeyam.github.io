@@ -69,9 +69,15 @@ export default function Resume() {
               {/* Masters */}
               <div className="resume-row">
                 <div>
-                  <div className="item-title">Master of Science in Computer Science</div>
+                  <div className="item-title">
+                    Master of Science in Computer Science | University of Arkansas
+                  </div>
                   <div className="item-sub">University of Arkansas — Fayetteville, AR</div>
-                  <div className="item-sub">GPA: 3.50</div>
+                  <div className="item-sub">GPA: 3.5</div>
+                  <div className="item-sub">
+                    <strong>Thesis:</strong> Improving a stock movement prediction model by incorporating
+                      news or sentiment data alongside traditional market data
+                  </div>
                 </div>
                 <div className="date-text">Expected May 2027</div>
               </div>
@@ -81,29 +87,10 @@ export default function Resume() {
                 <div>
                   <div className="item-title">Bachelor of Science in Computer Science</div>
                   <div className="item-sub">University of Arkansas — Fayetteville, AR</div>
-                  <div className="item-sub">GPA: 3.30</div>
+                  <div className="item-sub">GPA: 3.2</div>
                 </div>
                 <div className="date-text">May 2025</div>
               </div>
-            </section>
-
-            {/* Skills */}
-            <section className="resume-section">
-              <h2 className="section-title">Skills</h2>
-              <div className="section-divider" />
-
-              <p className="skills-line">
-                <strong>Programming Languages:</strong> Python, SQL, C++, JavaScript, HTML/CSS
-              </p>
-              <p className="skills-line">
-                <strong>Frameworks & Libraries:</strong> PyTorch, Scikit-learn, React
-              </p>
-              <p className="skills-line">
-                <strong>Data & Tools:</strong> Kafka, Elasticsearch, Spark, Git/GitHub, Tableau, Pandas, NumPy
-              </p>
-              <p className="skills-line">
-                <strong>Cloud & DevOps:</strong> Docker, Kubernetes, Azure
-              </p>
             </section>
 
             {/* Experience */}
@@ -172,6 +159,58 @@ export default function Resume() {
               />
             </section>
 
+            {/* Projects */}
+            <section className="resume-section">
+              <h2 className="section-title">Projects</h2>
+              <div className="section-divider" />
+
+              <div className="resume-row">
+                <div>
+                  <div className="item-title">Sports Odds Pipeline</div>
+
+                  <ul className="bullet-list">
+                    <li>
+                      Built a modular ETL pipeline in Python to ingest real-time sports betting odds from major
+                      U.S. markets via the Odds API and game results from the ESPN API, storing structured data
+                      in a SQLite database
+                    </li>
+
+                    <li>
+                      Engineered sports market efficiency analytics including close line value, calibration
+                      modeling, and best-market frequency tracking, finding pregame odds correctly predicted
+                      game outcomes 70% of the time versus a 50/50 baseline
+                    </li>
+
+                    <li>
+                      Developed an interactive Streamlit dashboard with strategy simulation metrics (ROI,
+                      drawdown, profit factor) and one-click ETL refresh, supporting both end-user analytics
+                      and admin-level pipeline monitoring
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="date-text">February 2026</div>
+              </div>
+            </section>
+
+            {/* Skills */}
+            <section className="resume-section">
+              <h2 className="section-title">Skills</h2>
+              <div className="section-divider" />
+
+              <p className="skills-line">
+                <strong>Programming Languages:</strong> Python, SQL, C++, JavaScript, HTML/CSS
+              </p>
+              <p className="skills-line">
+                <strong>Frameworks & Libraries:</strong> PyTorch, Scikit-learn, React
+              </p>
+              <p className="skills-line">
+                <strong>Data & Tools:</strong> Kafka, Elasticsearch, Spark, Git/GitHub, Tableau, Pandas, NumPy
+              </p>
+              <p className="skills-line">
+                <strong>Cloud & DevOps:</strong> Docker, Kubernetes, Azure
+              </p>
+            </section>
             <ScrollToTopButton />
           </div>
         </div>

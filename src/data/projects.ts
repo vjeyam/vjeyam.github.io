@@ -55,8 +55,9 @@ export const projects: Project[] = [
     desc: "End-to-end ETL + analytics system ingesting live sportsbook odds and game results into SQLite, powering a Streamlit dashboard for close-line, calibration, and strategy simulation.",
     tech: ["Python", "ETL", "SQLite", "APIs", "Streamlit"],
     images: [
-      "/demo-0.png",
-      "/demo-1.png",
+      "/demo-home.png",
+      "/demo-dashboard.png",
+      "/demo-plots.png",
     ],
     result: "ETL + live dashboard",
     links: [
