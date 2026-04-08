@@ -46,18 +46,18 @@ export default function Resume() {
             <div className="resume-contact-row">
               Fayetteville, AR 72704
               <span className="divider">|</span>
-              <a href="mailto:jeyamvishal5@gmail.com">jeyamvishal5@gmail.com</a>
+              <a href="mailto:vjeyam@uark.edu">vjeyam@uark.edu</a>
               <span className="divider">|</span>
               <a href="https://www.linkedin.com/in/vjeyam" target="_blank" rel="noreferrer">
-                linkedin.com/in/vjeyam
+                LinkedIn: vjeyam
               </a>
               <span className="divider">|</span>
               <a href="https://github.com/vjeyam" target="_blank" rel="noreferrer">
-                github.com/vjeyam
+                Github: vjeyam
               </a>
               <span className="divider">|</span>
-              <a href="https://vjeyam.github.io" target="_blank" rel="noreferrer">
-                vjeyam.github.io
+              <a href="https://vishaljeyam.com/" target="_blank" rel="noreferrer">
+                vishaljeyam.com
               </a>
             </div>
 

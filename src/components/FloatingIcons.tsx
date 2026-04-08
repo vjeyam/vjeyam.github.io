@@ -6,7 +6,7 @@ export default function FloatingIcons() {
     <div className="floating-icons">
       {/* Download Resume */}
       <a
-        href="/Resume.pdf"
+        href="/pdfs/Resume.pdf"
         download
         className="floating-icon accent-blue"
         title="Download Resume"
@@ -38,7 +38,7 @@ export default function FloatingIcons() {
 
       {/* Email */}
       <a
-        href="mailto:jeyamvishal5@gmail.com"
+        href="mailto:vjeyam@uark.edu"
         className="floating-icon accent-green"
         title="Email Me"
       >
