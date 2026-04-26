@@ -38,7 +38,7 @@ export default function FloatingIcons() {
 
       {/* Email */}
       <a
-        href="mailto:vjeyam@uark.edu"
+        href="mailto:jeyamvishal5@gmail.com"
         className="floating-icon accent-green"
         title="Email Me"
       >

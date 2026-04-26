@@ -46,7 +46,7 @@ export default function Resume() {
             <div className="resume-contact-row">
               Fayetteville, AR 72704
               <span className="divider">|</span>
-              <a href="mailto:vjeyam@uark.edu">vjeyam@uark.edu</a>
+              <a href="mailto:jeyamvishal5@gmail.com">jeyamvishal5@gmail.com</a>
               <span className="divider">|</span>
               <a href="https://www.linkedin.com/in/vjeyam" target="_blank" rel="noreferrer">
                 LinkedIn: vjeyam

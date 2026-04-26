@@ -4,4 +4,4 @@ This repository hosts my personal portfolio website, built with **React, Vite, a
 
 **Live Site:** [vishaljeyam.com](https://vishaljeyam.com/)
 
-**Contact:** vjeyam@uark.edu
+**Contact:** jeyamvishal5@gmail.com
