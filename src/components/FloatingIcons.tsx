@@ -1,9 +1,54 @@
-import { ArrowDownToLine, Github, Linkedin, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  ArrowDownToLine,
+  ArrowUp,
+  Github,
+  Linkedin,
+  Mail,
+} from "lucide-react";
+
 import "../styles/FloatingIcons.css";
 
 export default function FloatingIcons() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="floating-icons">
+      {/* Scroll to Top */}
+      {showScrollTop && (
+        <>
+          <button
+            className="floating-icon scroll-top-icon"
+            onClick={scrollToTop}
+            title="Back to Top"
+            aria-label="Back to Top"
+          >
+            <ArrowUp size={22} strokeWidth={1.75} />
+          </button>
+
+          <div className="floating-divider" />
+        </>
+      )}
+
       {/* Download Resume */}
       <a
         href="/pdfs/Resume.pdf"
