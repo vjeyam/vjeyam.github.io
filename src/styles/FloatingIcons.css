@@ -24,6 +24,23 @@
   transition: transform 200ms ease;
 }
 
+/* Scroll-to-top button */
+.scroll-top-icon {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+
+  color: rgba(209, 213, 219, 0.9);
+}
+
+/* Divider between scroll button and social icons */
+.floating-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(63, 63, 70, 0.8);
+}
+
 /* Individual icon */
 .floating-icon {
   display: flex;

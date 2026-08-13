@@ -49,6 +49,26 @@ export const projects: Project[] = [
     tags: ["Tabular", "Classification", "Imbalanced Data"],
     featured: true,
   },
+  // Plant Color Segmentation
+  {
+    title: "Plant Color Segmentation",
+    desc: "Real-time computer vision pipeline using YOLOv11 segmentation to classify yellow and green plants from onboard robot footage.",
+    tech: ["YOLOv11", "PyTorch", "Computer Vision", "Segmentation"],
+    images: [
+      "/plantcv-val-batch0-pred.jpg",
+      "/plantcv-MaskPR-curve.png",
+    ],
+    result: "92.5% mAP@0.5",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/vjeyam/plant-cv",
+      },
+    ],
+    source: "github",
+    tags: ["CV", "Deep Learning", "Segmentation", "Robotics"],
+    featured: true,
+  },
   // Sports Market Efficiency Pipeline
   {
     title: "Sports Market Efficiency Pipeline",
@@ -66,7 +86,7 @@ export const projects: Project[] = [
     ],
     source: "github",
     tags: ["ETL", "Analytics", "APIs"],
-    featured: true,
+    featured: false,
   },
   // Heart Disease Prediction
   {
