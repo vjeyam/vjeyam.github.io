@@ -31,22 +31,35 @@ export const projects: Project[] = [
     tags: ["CV", "Deep Learning", "Classification", "Research"],
     featured: true,
   },
-  // US Accident Severity Prediction
+  // LLM Model Optimization
   {
-    title: "US Accident Severity Prediction",
-    desc: "Multi-class classification on 1.5M+ US traffic records using feature engineering and XGBoost, addressing heavy class imbalance.",
-    tech: ["Scikit-learn", "XGBoost", "Python", "Pandas"],
-    images: [
-      "/accident-roc-curve.png",
-      "/accident-val-plots.png",
+    title: "LLM Quantization Tradeoffs",
+    desc: "Benchmarked Qwen2.5-7B-Instruct across multiple quantization levels to measure tradeoffs in model size, accuracy, latency, and inference throughput.",
+    tech: [
+      "Python",
+      "Ollama",
+      "Qwen2.5-7B",
+      "LLM Quantization",
     ],
-    result: "AUROC 0.91 (macro)",
+    images: [
+      "/llm_accuracy_vs_latency.png",
+      "/llm_accuracy_vs_size.png",
+      "/llm_compression_vs_accuracy.png",
+    ],
+    result: "69% smaller, ~1.9x throughput",
     links: [
-      { label: "GitHub", href: "https://github.com/vjeyam/us-accident-severity-prediction" },
-      { label: "Kaggle Dataset", href: "https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents" },
+      {
+        label: "GitHub",
+        href: "https://github.com/vjeyam/llm-quant-tradeoffs",
+      },
     ],
     source: "github",
-    tags: ["Tabular", "Classification", "Imbalanced Data"],
+    tags: [
+      "LLM",
+      "Quantization",
+      "Benchmarking",
+      "Inference",
+    ],
     featured: true,
   },
   // Plant Color Segmentation
@@ -155,6 +168,24 @@ export const projects: Project[] = [
     ],
     source: "github",
     tags: ["Tabular", "Classification", "Imbalanced Data", "Visualization"],
+    featured: false,
+  },
+  // US Accident Severity Prediction
+  {
+    title: "US Accident Severity Prediction",
+    desc: "Multi-class classification on 1.5M+ US traffic records using feature engineering and XGBoost, addressing heavy class imbalance.",
+    tech: ["Scikit-learn", "XGBoost", "Python", "Pandas"],
+    images: [
+      "/accident-roc-curve.png",
+      "/accident-val-plots.png",
+    ],
+    result: "AUROC 0.91 (macro)",
+    links: [
+      { label: "GitHub", href: "https://github.com/vjeyam/us-accident-severity-prediction" },
+      { label: "Kaggle Dataset", href: "https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents" },
+    ],
+    source: "github",
+    tags: ["Tabular", "Classification", "Imbalanced Data"],
     featured: false,
   }
 ];

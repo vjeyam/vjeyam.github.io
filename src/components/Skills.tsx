@@ -2,10 +2,52 @@ import "../styles/Skills.css";
 
 export default function Skills() {
   const categories: Record<string, string[]> = {
-    "Programming Languages": ["Python", "SQL", "C++", "JavaScript", "HTML/CSS"],
-    "Frameworks & Libraries": ["PyTorch", "Scikit-learn", "React"],
-    "Data & Tools": ["Kafka", "Elasticsearch", "Spark", "Git/GitHub", "Tableau", "Pandas", "NumPy"],
-    "Cloud & DevOps": ["Docker", "Kubernetes", "Azure"],
+    "Programming Languages": [
+      "Python",
+      "SQL",
+      "C++",
+      "Bash",
+      "JavaScript/TypeScript",
+      "HTML/CSS",
+    ],
+
+    "ML & AI": [
+      "PyTorch",
+      "Scikit-learn",
+      "Hugging Face",
+      "Ollama",
+      "Deep Learning",
+      "Machine Learning",
+      "LLMs",
+    ],
+
+    "Computer Vision": [
+      "OpenCV",
+      "Ultralytics/YOLO",
+      "Torchvision",
+      "Object Detection",
+      "Image Segmentation",
+    ],
+
+    "Data & Databases": [
+      "Pandas",
+      "NumPy",
+      "Kafka",
+      "Elasticsearch",
+      "PostgreSQL",
+      "MySQL",
+      "Supabase",
+    ],
+
+    "Cloud & Tools": [
+      "Docker",
+      "Azure",
+      "Git/GitHub",
+      "Jupyter",
+      "Matplotlib",
+      "Seaborn",
+      "Tableau",
+    ],
   };
 
   return (
@@ -18,9 +60,9 @@ export default function Skills() {
             <h3 className="skills-category">{category}</h3>
 
             <div className="skills-chips">
-              {items.map((s) => (
-                <div key={s} className="skill-chip">
-                  {s}
+              {items.map((skill) => (
+                <div key={skill} className="skill-chip">
+                  {skill}
                 </div>
               ))}
             </div>
