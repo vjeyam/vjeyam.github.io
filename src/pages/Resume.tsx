@@ -6,35 +6,59 @@ type Project = {
   bullets: string[];
 };
 
-/*
-  Skills that should be highlighted when mentioned
-  inside experience/project descriptions.
-*/
 const highlightedSkills = [
+  // Programming
   "Python",
   "SQL",
   "C++",
+  "Bash",
   "JavaScript",
+  "TypeScript",
+  "JavaScript/TypeScript",
   "HTML/CSS",
+
+  // ML & AI
   "PyTorch",
   "Scikit-learn",
-  "React",
-  "Kafka",
-  "Elasticsearch",
-  "Spark",
-  "Git/GitHub",
-  "Tableau",
+  "Hugging Face",
+  "Ollama",
+  "Deep Learning",
+  "Machine Learning",
+  "LLMs",
+
+  // Computer Vision
+  "OpenCV",
+  "Ultralytics",
+  "YOLO",
+  "Torchvision",
+  "Object Detection",
+  "Image Segmentation",
+
+  // Data & Databases
   "Pandas",
   "NumPy",
+  "Kafka",
+  "Elasticsearch",
+  "PostgreSQL",
+  "MySQL",
+  "Supabase",
+
+  // Cloud & Tools
   "Docker",
-  "Kubernetes",
   "Azure",
+  "Git/GitHub",
+  "GitHub",
+  "Git",
+  "Jupyter",
+  "Matplotlib",
+  "Seaborn",
+  "Tableau",
 ];
 
 /*
   Escapes special regex characters.
 
-  Needed for skills such as:
+  Needed for terms such as:
   C++
   Git/GitHub
   HTML/CSS
@@ -44,8 +68,8 @@ function escapeRegex(text: string) {
 }
 
 /*
-  Build the skill regex once instead of rebuilding it
-  every time a bullet gets rendered.
+  Longer terms are sorted first to prevent shorter
+  overlapping terms from matching first.
 */
 const skillPattern = [...highlightedSkills]
   .sort((a, b) => b.length - a.length)
@@ -53,25 +77,12 @@ const skillPattern = [...highlightedSkills]
   .join("|");
 
 /*
-  Splits text around metrics and skills.
+  Highlights useful numeric metrics without styling
+  numbers embedded in names such as:
 
-  Metrics highlighted:
-  20+
-  7,000+
-  98.1%
-  92.6%
-  2nd of 7
-  50/50
-  mAP@50
-
-  Skills highlighted:
-  Python
-  Kafka
-  Elasticsearch
-  etc.
-
-  Model names such as YOLOv8, YOLOv11, and A200
-  are left alone.
+  YOLOv8
+  YOLOv11
+  A200
 */
 const splitRegex = new RegExp(
   `(\\~?\\d+(?:\\.\\d+)?%|\\d[\\d,]*\\+|\\d+(?:st|nd|rd|th)(?: of \\d+)?|mAP@50|50\\/50|${skillPattern})`,
@@ -84,7 +95,8 @@ const metricRegex =
 const skillRegex = new RegExp(`^(${skillPattern})$`, "i");
 
 /*
-  Highlights metrics and technical skills inside resume bullets.
+  Metrics -> blue
+  Technical skills -> purple
 */
 function highlightResumeText(text: string) {
   return text.split(splitRegex).map((part, i) => {
@@ -204,6 +216,7 @@ export default function Resume() {
                 vishaljeyam.com
               </a>
 
+              {/* RESUME PDF ACTIONS */}
               <div className="resume-actions">
                 <a
                   href="/pdfs/Resume.pdf"
@@ -215,7 +228,7 @@ export default function Resume() {
                 </a>
 
                 <a
-                  href="/pdfs/resume.pdf"
+                  href="/pdfs/Resume.pdf"
                   download="Vishal_Jeyam_Resume.pdf"
                   className="resume-action-button resume-download-button"
                 >
@@ -347,30 +360,30 @@ export default function Resume() {
 
               <div className="resume-row">
                 <div className="resume-content">
-                  <div className="item-title">Sports Odds Pipeline</div>
+                  <div className="item-title">LLM Model Optimization</div>
 
                   <ul className="bullet-list">
                     <li>
                       {highlightResumeText(
-                        "Built a modular ETL pipeline in Python to ingest real-time sports betting odds from major U.S. markets via the Odds API and game results from the ESPN API, storing structured data in a SQLite database"
+                        "Benchmarked Qwen2.5-7B-Instruct across 4 quantization levels (F16, Q8_0, Q4_K_M, Q2_K) in Python and Ollama, measuring accuracy, latency, and throughput on MedQA and PubMedQA datasets"
                       )}
                     </li>
 
                     <li>
                       {highlightResumeText(
-                        "Engineered sports market efficiency analytics including close line value, calibration modeling, and best-market frequency tracking, finding pregame odds correctly predicted game outcomes 70% of the time versus a 50/50 baseline"
+                        "Reduced model size 69% (14.19 GB to 4.36 GB) at Q4_K_M while improving MedQA accuracy from 58.8% to 59.1% and PubMedQA accuracy from 74.0% to 75.1%"
                       )}
                     </li>
 
                     <li>
                       {highlightResumeText(
-                        "Developed an interactive Streamlit dashboard with strategy simulation metrics (ROI, drawdown, profit factor) and one-click ETL refresh, supporting both end-user analytics and admin-level pipeline monitoring"
+                        "Increased MedQA inference throughput 87% (82.5 to 154.0 tokens/sec) at Q4_K_M with no accuracy loss, while heavier Q2_K compression dropped MedQA accuracy 9 points"
                       )}
                     </li>
                   </ul>
                 </div>
 
-                <div className="date-text">February 2026</div>
+                <div className="date-text">August 2026</div>
               </div>
             </section>
 
@@ -380,22 +393,30 @@ export default function Resume() {
               <div className="section-divider" />
 
               <p className="skills-line">
-                <strong>Programming Languages:</strong> Python, SQL, C++,
-                JavaScript, HTML/CSS
+                <strong>Programming Languages:</strong>{" "}
+                Python, SQL, C++, Bash, JavaScript/TypeScript, HTML/CSS
               </p>
 
               <p className="skills-line">
-                <strong>Frameworks & Libraries:</strong> PyTorch, Scikit-learn,
-                React
+                <strong>ML & AI:</strong>{" "}
+                PyTorch, Scikit-learn, Hugging Face, Ollama, Deep Learning,
+                Machine Learning, LLMs
               </p>
 
               <p className="skills-line">
-                <strong>Data & Tools:</strong> Kafka, Elasticsearch, Spark,
-                Git/GitHub, Tableau, Pandas, NumPy
+                <strong>Computer Vision:</strong>{" "}
+                OpenCV, Ultralytics/YOLO, Torchvision, Object Detection,
+                Image Segmentation
               </p>
 
               <p className="skills-line">
-                <strong>Cloud & DevOps:</strong> Docker, Kubernetes, Azure
+                <strong>Data & Databases:</strong>{" "}
+                Pandas, NumPy, Kafka, Elasticsearch, PostgreSQL, MySQL, Supabase
+              </p>
+
+              <p className="skills-line">
+                <strong>Cloud & Tools:</strong>{" "}
+                Docker, Azure, Git/GitHub, Jupyter, Matplotlib, Seaborn, Tableau
               </p>
             </section>
           </div>
