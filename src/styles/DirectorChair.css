@@ -1,0 +1,55 @@
+/* ========================================
+   DIRECTOR CHAIR
+   HTML / DOM OVERLAYS
+
+   Three.js geometry and materials belong
+   inside DirectorChair.tsx.
+
+   This stylesheet is only for HTML content
+   rendered as part of the chair component.
+======================================== */
+
+/* ========================================
+   CHAIR NAME
+======================================== */
+
+.chair-name {
+  width: 130px;
+
+  text-align: center;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 7px;
+
+  line-height: 1.1;
+
+  letter-spacing: 0.16em;
+
+  color: #f1eee8;
+
+  white-space: nowrap;
+
+  user-select: none;
+
+  pointer-events: none;
+}
+
+.chair-name span,
+.chair-name strong {
+  display: block;
+}
+
+.chair-name span {
+  font-weight: 300;
+}
+
+.chair-name strong {
+  margin-top: 4px;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.18em;
+}

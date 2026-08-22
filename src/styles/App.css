@@ -1,0 +1,709 @@
+/* ========================================
+   SITE
+======================================== */
+
+.site {
+  width: 100%;
+
+  background: var(--bg);
+}
+
+/* ========================================
+   PERSISTENT 3D STUDIO
+======================================== */
+
+.studio-scroll {
+  position: relative;
+
+  min-height: 200vh;
+
+  background: var(--bg);
+}
+
+.canvas-container {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  z-index: 0;
+
+  pointer-events: auto;
+}
+
+.canvas-container canvas {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  pointer-events: auto;
+}
+
+.studio-content {
+  position: relative;
+
+  z-index: 2;
+
+  /*
+   * Pull the HTML sections back over
+   * the persistent Three.js canvas.
+   */
+  margin-top: -100vh;
+
+  pointer-events: none;
+}
+
+.studio-section {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  min-height: 700px;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   GLOBAL NAVIGATION
+======================================== */
+
+.nav {
+  position: fixed;
+
+  z-index: 100;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  padding: 30px 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  pointer-events: none;
+}
+
+.nav a {
+  pointer-events: auto;
+}
+
+/* ========================================
+   BRAND
+======================================== */
+
+.brand {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.brand:hover {
+  color: var(--bg);
+
+  background: var(--text);
+
+  border-color: var(--text);
+}
+
+/* ========================================
+   NAV LINKS
+======================================== */
+
+.nav-links {
+  display: flex;
+
+  gap: 34px;
+}
+
+.nav-links a {
+  position: relative;
+
+  color: #ababab;
+
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.nav-links a::before {
+  content: "[";
+
+  margin-right: 6px;
+
+  color: #f1f1f1;
+}
+
+.nav-links a::after {
+  content: "]";
+
+  margin-left: 6px;
+
+  color: #f1f1f1;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+  position: relative;
+
+  height: 100vh;
+
+  min-height: 700px;
+
+  overflow: hidden;
+
+  background: transparent;
+}
+
+/* ========================================
+   HERO COPY
+======================================== */
+
+.hero-copy {
+  position: absolute;
+
+  z-index: 5;
+
+  left: clamp(28px, 7vw, 110px);
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 0.18em;
+
+  color: var(--accent);
+}
+
+.hero-copy h1 {
+  margin: 0;
+
+  font-size: clamp(70px, 9vw, 150px);
+
+  line-height: 0.76;
+
+  letter-spacing: -0.075em;
+
+  font-weight: 300;
+}
+
+.hero-copy h1 span {
+  font-weight: 800;
+}
+
+.hero-description {
+  margin-top: 35px;
+  margin-bottom: 0;
+
+  font-size: clamp(13px, 1.1vw, 17px);
+
+  line-height: 1.65;
+
+  color: #a1a1a1;
+}
+
+/* ========================================
+   HERO SIDE LABEL
+======================================== */
+
+.hero-side-copy {
+  position: absolute;
+
+  z-index: 5;
+
+  right: 42px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 16px;
+
+  font-family: "DM Mono", monospace;
+
+  pointer-events: none;
+}
+
+.hero-side-copy span {
+  font-size: 9px;
+
+  color: var(--accent);
+}
+
+.hero-side-copy p {
+  margin: 0;
+
+  text-align: right;
+
+  font-size: 9px;
+
+  line-height: 1.8;
+
+  letter-spacing: 0.12em;
+
+  color: #8b8b8b;
+}
+
+/* ========================================
+   SCROLL INDICATOR
+======================================== */
+
+.scroll-indicator {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 50%;
+
+  bottom: 26px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 12px;
+
+  font-family: "DM Mono", monospace;
+
+  color: #868686;
+
+  pointer-events: none;
+}
+
+.scroll-indicator p {
+  margin: 0;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+}
+
+.scroll-line {
+  position: relative;
+
+  width: 1px;
+  height: 58px;
+
+  background: rgba(255, 255, 255, 0.16);
+
+  overflow: hidden;
+}
+
+.scroll-line span {
+  position: absolute;
+
+  top: -30%;
+  left: 0;
+
+  width: 100%;
+  height: 30%;
+
+  background: #ffffff;
+
+  animation: scroll-line 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(430%);
+  }
+}
+
+/* ========================================
+   SKILLS / TECHNICAL TOOLKIT
+======================================== */
+
+.skills-section {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+
+  padding: 0;
+
+  background: transparent;
+}
+
+/* ========================================
+   SKILLS HEADING
+
+   Positioned above the left-most monitor.
+======================================== */
+
+.skills-heading {
+  position: absolute;
+
+  z-index: 4;
+
+  /*
+   * At desktop widths this lands around
+   * the horizontal position of the left monitor.
+   */
+  left: clamp(270px, 4vw, 430px);
+
+  /*
+   * High enough to sit above the monitor,
+   * while remaining below the navigation.
+   */
+  top: clamp(125px, 5vh, 165px);
+
+  width: min(430px, 31vw);
+
+  pointer-events: none;
+}
+
+.section-number {
+  margin: 0 0 14px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.17em;
+
+  color: var(--accent);
+}
+
+.skills-heading h2 {
+  margin: 0;
+
+  font-size: clamp(42px, 4.4vw, 72px);
+
+  line-height: 0.87;
+
+  letter-spacing: -0.065em;
+
+  font-weight: 300;
+}
+
+.skills-heading h2 span {
+  font-weight: 700;
+}
+
+.skills-intro {
+  margin-top: 18px;
+  margin-bottom: 0;
+
+  max-width: 310px;
+
+  font-size: 12px;
+
+  line-height: 1.65;
+
+  color: #8e8e8e;
+}
+
+/* ========================================
+   SKILLS LIST
+
+   Lives on the right side of the frame,
+   leaving the workstation visible.
+======================================== */
+
+.skills-panel {
+  position: absolute;
+
+  z-index: 4;
+
+  right: clamp(28px, 4vw, 70px);
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: min(315px, 23vw);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+
+  pointer-events: auto;
+}
+
+.skill-group {
+  display: grid;
+
+  grid-template-columns: 26px 1fr;
+
+  gap: 12px;
+
+  padding-top: 16px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.skill-index {
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  color: var(--accent);
+}
+
+.skill-group h3 {
+  margin: 0 0 10px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.12em;
+
+  color: #eeeeee;
+}
+
+.skill-group p {
+  margin: 0;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  line-height: 1.85;
+
+  letter-spacing: 0.05em;
+
+  color: #868686;
+}
+
+/* ========================================
+   WORKSTATION CAPTION
+======================================== */
+
+.skills-caption {
+  position: absolute;
+
+  z-index: 4;
+
+  bottom: 26px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  gap: 18px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+
+  color: #666666;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   PLACEHOLDER SECTIONS
+======================================== */
+
+.coming-section {
+  min-height: 100vh;
+
+  padding: 120px clamp(28px, 7vw, 110px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+  background: #080808;
+}
+
+.coming-section p {
+  margin: 0 0 22px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 0.15em;
+
+  color: var(--accent);
+}
+
+.coming-section h2 {
+  margin: 0;
+
+  max-width: 900px;
+
+  font-size: clamp(48px, 7vw, 110px);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.06em;
+
+  font-weight: 400;
+}
+
+/* ========================================
+   TABLET / SMALL DESKTOP
+======================================== */
+
+@media (max-width: 1100px) {
+  .nav-links {
+    gap: 20px;
+  }
+
+  .skills-heading {
+    left: clamp(180px, 20vw, 270px);
+
+    width: 36vw;
+  }
+
+  .skills-heading h2 {
+    font-size: clamp(38px, 4.7vw, 58px);
+  }
+
+  .skills-panel {
+    width: 240px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 900px) {
+  .nav {
+    padding: 22px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-copy {
+    left: 24px;
+
+    top: auto;
+
+    bottom: 125px;
+
+    transform: none;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(64px, 20vw, 100px);
+  }
+
+  .hero-description {
+    font-size: 12px;
+  }
+
+  .hero-side-copy {
+    display: none;
+  }
+
+  /*
+   * On mobile the 3D composition will eventually
+   * need its own camera path. For now, keep the
+   * skills text readable rather than forcing the
+   * desktop monitor alignment.
+   */
+
+  .skills-heading {
+    left: 24px;
+
+    top: 120px;
+
+    width: min(440px, calc(100vw - 48px));
+  }
+
+  .skills-heading h2 {
+    font-size: clamp(44px, 12vw, 68px);
+  }
+
+  .skills-panel {
+    right: 24px;
+
+    top: auto;
+
+    bottom: 70px;
+
+    transform: none;
+
+    width: min(300px, calc(100vw - 48px));
+
+    gap: 18px;
+  }
+
+  .skill-group {
+    padding-top: 10px;
+  }
+
+  .skills-caption {
+    display: none;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-line span {
+    animation: none;
+  }
+}
