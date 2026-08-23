@@ -5,28 +5,59 @@ import StudioScene from "./components/studio/StudioScene";
 function App() {
   return (
     <main className="site" id="top">
+      {/* ========================================
+          PERSISTENT 3D STUDIO
+
+          01 — Hero
+          02 — Skills
+          03 — Work Experience
+          04 — Projects
+      ======================================== */}
+
       <div className="studio-scroll">
         <StudioScene />
 
         <div className="studio-content">
-          {/* GLOBAL NAV */}
+          {/* ====================================
+              GLOBAL NAV
+          ==================================== */}
+
           <nav className="nav">
-            <a className="brand" href="#top" aria-label="Home">
+            <a
+              className="brand"
+              href="#top"
+              aria-label="Home"
+            >
               VJ
             </a>
 
             <div className="nav-links">
-              <a href="#top">Home</a>
-              <a href="#skills">Skills</a>
-              <a href="#experience">Experience</a>
-              <a href="#projects">Projects</a>
-              <a href="#contact">Contact</a>
+              <a href="#top">
+                Home
+              </a>
+
+              <a href="#skills">
+                Skills
+              </a>
+
+              <a href="#experience">
+                Experience
+              </a>
+
+              <a href="#projects">
+                Projects
+              </a>
+
+              <a href="#contact">
+                Contact
+              </a>
             </div>
           </nav>
 
-          {/* ======================
-              01 — HERO
-          ====================== */}
+          {/* ====================================
+              01 — HERO / DIRECTOR'S CHAIR
+          ==================================== */}
+
           <section className="hero studio-section">
             <div className="hero-copy">
               <p className="eyebrow">
@@ -36,7 +67,9 @@ function App() {
               <h1>
                 VISHAL
                 <br />
-                <span>JEYAM</span>
+                <span>
+                  JEYAM
+                </span>
               </h1>
 
               <p className="hero-description">
@@ -47,7 +80,9 @@ function App() {
             </div>
 
             <div className="hero-side-copy">
-              <span>01</span>
+              <span>
+                01
+              </span>
 
               <p>
                 MACHINE LEARNING
@@ -66,13 +101,16 @@ function App() {
                 <span />
               </div>
 
-              <p>ENTER THE STUDIO</p>
+              <p>
+                ENTER THE STUDIO
+              </p>
             </div>
           </section>
 
-          {/* ======================
-              02 — SKILLS
-          ====================== */}
+          {/* ====================================
+              02 — SKILLS / WORKSTATION
+          ==================================== */}
+
           <section
             className="skills-section studio-section"
             id="skills"
@@ -85,7 +123,9 @@ function App() {
               <h2>
                 BUILT
                 <br />
-                <span>FOR THE SET.</span>
+                <span>
+                  FOR THE SET.
+                </span>
               </h2>
 
               <p className="skills-intro">
@@ -95,11 +135,19 @@ function App() {
             </div>
 
             <div className="skills-panel">
+              {/* ================================
+                  MACHINE LEARNING
+              ================================ */}
+
               <div className="skill-group">
-                <span className="skill-index">01</span>
+                <span className="skill-index">
+                  01
+                </span>
 
                 <div>
-                  <h3>MACHINE LEARNING</h3>
+                  <h3>
+                    MACHINE LEARNING
+                  </h3>
 
                   <p>
                     Python
@@ -117,11 +165,19 @@ function App() {
                 </div>
               </div>
 
+              {/* ================================
+                  ENGINEERING
+              ================================ */}
+
               <div className="skill-group">
-                <span className="skill-index">02</span>
+                <span className="skill-index">
+                  02
+                </span>
 
                 <div>
-                  <h3>ENGINEERING</h3>
+                  <h3>
+                    ENGINEERING
+                  </h3>
 
                   <p>
                     TypeScript
@@ -139,11 +195,19 @@ function App() {
                 </div>
               </div>
 
+              {/* ================================
+                  INFRASTRUCTURE
+              ================================ */}
+
               <div className="skill-group">
-                <span className="skill-index">03</span>
+                <span className="skill-index">
+                  03
+                </span>
 
                 <div>
-                  <h3>INFRASTRUCTURE</h3>
+                  <h3>
+                    INFRASTRUCTURE
+                  </h3>
 
                   <p>
                     AWS
@@ -161,47 +225,76 @@ function App() {
             </div>
 
             <div className="skills-caption">
-              <span>WORKSTATION 02</span>
-              <span>TECHNICAL DEPARTMENT</span>
+              <span>
+                WORKSTATION 02
+              </span>
+
+              <span>
+                TECHNICAL DEPARTMENT
+              </span>
             </div>
           </section>
+
+          {/* ====================================
+              03 — WORK EXPERIENCE
+
+              Intentionally empty.
+
+              StoryboardRoom.tsx owns the actual
+              visible 3D wall/cards.
+
+              This section provides:
+              - 100vh of scroll distance
+              - #experience navigation anchor
+              - camera progression
+          ==================================== */}
+
+          <section
+            className="resume-room-section studio-section"
+            id="experience"
+            aria-label="Work Experience"
+          />
+
+          {/* ====================================
+              04 — PROJECTS
+
+              Same idea as Experience.
+
+              Scrolling through this section
+              drives the camera around the
+              corridor and across the Projects
+              storyboard wall.
+          ==================================== */}
+
+          <section
+            className="resume-room-section studio-section"
+            id="projects"
+            aria-label="Projects"
+          />
         </div>
       </div>
 
-      {/* We'll convert these into 3D sets later */}
-      <section
-        className="coming-section"
-        id="experience"
-      >
-        <p>03 / EXPERIENCE</p>
+      {/* ========================================
+          05 — CONTACT
 
-        <h2>
-          Production history
-          <br />
-          comes next.
-        </h2>
-      </section>
+          Keeping this outside the current
+          3D studio tour for now.
 
-      <section
-        className="coming-section"
-        id="projects"
-      >
-        <p>04 / PROJECTS</p>
-
-        <h2>
-          Each project becomes
-          <br />
-          its own set.
-        </h2>
-      </section>
+          Later this can become the entrance
+          into the infinity-inspired room.
+      ======================================== */}
 
       <section
         className="coming-section"
         id="contact"
       >
-        <p>05 / CONTACT</p>
+        <p>
+          05 / CONTACT
+        </p>
 
-        <h2>That&apos;s a wrap.</h2>
+        <h2>
+          That&apos;s a wrap.
+        </h2>
       </section>
     </main>
   );

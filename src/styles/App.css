@@ -15,7 +15,7 @@
 .studio-scroll {
   position: relative;
 
-  min-height: 200vh;
+  min-height: 400vh;
 
   background: var(--bg);
 }
@@ -389,19 +389,12 @@
 
   z-index: 4;
 
-  /*
-   * At desktop widths this lands around
-   * the horizontal position of the left monitor.
-   */
-  left: clamp(270px, 4vw, 430px);
+  left: clamp(70px, 8vw, 150px);
+  top: clamp(130px, 17vh, 180px);
 
-  /*
-   * High enough to sit above the monitor,
-   * while remaining below the navigation.
-   */
-  top: clamp(125px, 5vh, 165px);
+  width: min(350px, 24vw);
 
-  width: min(430px, 31vw);
+  transform: translateY(-40px);
 
   pointer-events: none;
 }
@@ -449,64 +442,69 @@
 
 /* ========================================
    SKILLS LIST
-
-   Lives on the right side of the frame,
-   leaving the workstation visible.
 ======================================== */
 
 .skills-panel {
   position: absolute;
-
   z-index: 4;
 
-  right: clamp(28px, 4vw, 70px);
-
-  top: 50%;
+  right: clamp(12px, 2vw, 26px);
+  top: 54%;
 
   transform: translateY(-50%);
 
-  width: min(315px, 23vw);
+  width: min(290px, 21vw);
 
   display: flex;
   flex-direction: column;
-
-  gap: 30px;
+  gap: 14px;
 
   pointer-events: auto;
 }
 
 .skill-group {
   display: grid;
-
-  grid-template-columns: 26px 1fr;
-
+  grid-template-columns: 30px 1fr;
   gap: 12px;
 
-  padding-top: 16px;
+  padding: 15px 15px 15px 14px;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+
+  background: rgba(8, 8, 8, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .skill-index {
-  font-family: "DM Mono", monospace;
-
-  font-size: 9px;
-
-  color: var(--accent);
-}
-
-.skill-group h3 {
-  margin: 0 0 10px;
+  padding-top: 2px;
 
   font-family: "DM Mono", monospace;
 
   font-size: 10px;
+  font-weight: 500;
 
+  color: var(--accent);
+
+  letter-spacing: 0.08em;
+}
+
+.skill-group h3 {
+  margin: 0 0 12px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 12px;
   font-weight: 500;
 
   letter-spacing: 0.12em;
 
-  color: #eeeeee;
+  color: #f3f3f3;
 }
 
 .skill-group p {
@@ -514,13 +512,13 @@
 
   font-family: "DM Mono", monospace;
 
-  font-size: 9px;
+  font-size: 11px;
 
-  line-height: 1.85;
+  line-height: 1.9;
 
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 
-  color: #868686;
+  color: #d0d0d0;
 }
 
 /* ========================================
@@ -549,6 +547,29 @@
   letter-spacing: 0.15em;
 
   color: #666666;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   RESUME GALLERY SECTIONS
+
+   These sections exist only to provide
+   scroll distance / navigation anchors.
+
+   The actual visible content lives in
+   StoryboardRoom.tsx.
+======================================== */
+
+.resume-room-section {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  min-height: 700px;
+
+  background: transparent;
 
   pointer-events: none;
 }

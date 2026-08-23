@@ -1,0 +1,156 @@
+/* ========================================
+   STORYBOARD / RESUME GALLERY
+======================================== */
+
+.storyboard-room-heading {
+  width: 340px;
+
+  text-align: center;
+
+  font-family: "DM Mono", monospace;
+
+  user-select: none;
+  pointer-events: none;
+
+  margin-top: 150px;
+}
+
+.storyboard-room-heading span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 8px;
+  font-weight: 500;
+
+  letter-spacing: 0.18em;
+
+  color: #ff563d;
+}
+
+.storyboard-room-heading strong {
+  display: block;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 29px;
+  font-weight: 700;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.045em;
+
+  color: #f2eee8;
+
+  text-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================
+   CARD
+======================================== */
+
+.storyboard-card {
+  width: 210px;
+  min-height: 220px;
+
+  padding: 16px;
+
+  display: grid;
+
+  grid-template-columns: 24px 1fr;
+
+  gap: 10px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.42);
+
+  border-radius: 2px;
+
+  color: #171411;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e0d9cb,
+      #cac1b1
+    );
+
+  box-shadow:
+    0 14px 32px
+      rgba(0, 0, 0, 0.32),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.5);
+
+  font-family: "DM Mono", monospace;
+
+  user-select: none;
+
+  pointer-events: none;
+}
+
+.storyboard-card__number {
+  padding-top: 2px;
+
+  font-size: 8px;
+  font-weight: 500;
+
+  letter-spacing: 0.06em;
+
+  color: #d33f2c;
+}
+
+.storyboard-card__body h3 {
+  margin: 0 0 9px;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  line-height: 1.08;
+
+  letter-spacing: -0.025em;
+
+  color: #171411;
+}
+
+.storyboard-card__subtitle {
+  margin: 0 0 13px;
+
+  font-size: 7px;
+
+  line-height: 1.55;
+
+  letter-spacing: 0.035em;
+
+  color: #5e554e;
+}
+
+.storyboard-card__description {
+  margin: 0;
+
+  font-size: 7px;
+
+  line-height: 1.68;
+
+  color: #3c3631;
+}
+
+@media (max-width: 900px) {
+  .storyboard-card {
+    width: 190px;
+    min-height: 205px;
+
+    padding: 14px;
+  }
+
+  .storyboard-room-heading {
+    width: 290px;
+  }
+
+  .storyboard-room-heading strong {
+    font-size: 25px;
+  }
+}

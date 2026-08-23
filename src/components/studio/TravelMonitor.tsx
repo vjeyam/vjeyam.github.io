@@ -12,15 +12,17 @@ type TravelMonitorProps = {
 };
 
 const canadaPhotos = [
-  "/easter-eggs/travel/canada/canada_pastry.png",
-  "/easter-eggs/travel/canada/canada_snowfall.png",
-  "/easter-eggs/travel/canada/canada_waterfalls.png",
-  "/easter-eggs/travel/canada/notre_dame_basilica.png",
-  "/easter-eggs/travel/canada/quebec_dessert.png",
-  "/easter-eggs/travel/canada/toronto_breakfast.png",
-  "/easter-eggs/travel/canada/toronto_downtown.png",
-  "/easter-eggs/travel/canada/toronto_night_cityscape.png",
-  "/easter-eggs/travel/canada/toronto_shoreline.png",
+  "/easter-eggs/travel/canada/canada01.jpg",
+  "/easter-eggs/travel/canada/canada02.jpg",
+  "/easter-eggs/travel/canada/canada03.jpg",
+  "/easter-eggs/travel/canada/canada04.jpg",
+  "/easter-eggs/travel/canada/canada05.jpg",
+  "/easter-eggs/travel/canada/canada06.jpg",
+  "/easter-eggs/travel/canada/canada07.jpg",
+  "/easter-eggs/travel/canada/canada08.jpg",
+  "/easter-eggs/travel/canada/canada09.jpg",
+  "/easter-eggs/travel/canada/canada10.jpg",
+  "/easter-eggs/travel/canada/canada11.jpg"
 ];
 
 export default function TravelMonitor({

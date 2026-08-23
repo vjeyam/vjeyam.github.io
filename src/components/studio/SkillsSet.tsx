@@ -6,7 +6,7 @@ export default function SkillsSet() {
   const screen = "#111318";
 
   return (
-    <group position={[7, -0.42, -1]}>
+    <group position={[5.15, -0.42, -1]}>
       {/* floor platform */}
       <mesh position={[0, -0.48, 0]}>
         <cylinderGeometry args={[3.2, 3.45, 0.14, 64]} />
