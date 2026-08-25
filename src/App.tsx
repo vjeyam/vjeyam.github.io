@@ -5,15 +5,6 @@ import StudioScene from "./components/studio/StudioScene";
 function App() {
   return (
     <main className="site" id="top">
-      {/* ========================================
-          PERSISTENT 3D STUDIO
-
-          01 — Hero
-          02 — Skills
-          03 — Work Experience
-          04 — Projects
-      ======================================== */}
-
       <div className="studio-scroll">
         <StudioScene />
 
@@ -55,7 +46,7 @@ function App() {
           </nav>
 
           {/* ====================================
-              01 — HERO / DIRECTOR'S CHAIR
+              01 — HERO
           ==================================== */}
 
           <section className="hero studio-section">
@@ -67,6 +58,7 @@ function App() {
               <h1>
                 VISHAL
                 <br />
+
                 <span>
                   JEYAM
                 </span>
@@ -108,7 +100,7 @@ function App() {
           </section>
 
           {/* ====================================
-              02 — SKILLS / WORKSTATION
+              02 — SKILLS
           ==================================== */}
 
           <section
@@ -123,6 +115,7 @@ function App() {
               <h2>
                 BUILT
                 <br />
+
                 <span>
                   FOR THE SET.
                 </span>
@@ -135,10 +128,6 @@ function App() {
             </div>
 
             <div className="skills-panel">
-              {/* ================================
-                  MACHINE LEARNING
-              ================================ */}
-
               <div className="skill-group">
                 <span className="skill-index">
                   01
@@ -150,24 +139,20 @@ function App() {
                   </h3>
 
                   <p>
-                    Python
-                    <br />
                     PyTorch
-                    <br />
-                    TensorFlow
                     <br />
                     Scikit-learn
                     <br />
-                    Computer Vision
+                    Hugging Face
                     <br />
-                    LLMs / RAG
+                    Ollama
+                    <br />
+                    Deep Learning
+                    <br />
+                    LLMs
                   </p>
                 </div>
               </div>
-
-              {/* ================================
-                  ENGINEERING
-              ================================ */}
 
               <div className="skill-group">
                 <span className="skill-index">
@@ -176,28 +161,24 @@ function App() {
 
                 <div>
                   <h3>
-                    ENGINEERING
+                    COMPUTER VISION
                   </h3>
 
                   <p>
-                    TypeScript
+                    OpenCV
                     <br />
-                    React
+                    Ultralytics / YOLO
                     <br />
-                    FastAPI
+                    Torchvision
                     <br />
-                    SQL
+                    Object Detection
                     <br />
-                    Docker
+                    Image Segmentation
                     <br />
-                    Git
+                    Multimodal Data
                   </p>
                 </div>
               </div>
-
-              {/* ================================
-                  INFRASTRUCTURE
-              ================================ */}
 
               <div className="skill-group">
                 <span className="skill-index">
@@ -206,19 +187,21 @@ function App() {
 
                 <div>
                   <h3>
-                    INFRASTRUCTURE
+                    ENGINEERING & DATA
                   </h3>
 
                   <p>
-                    AWS
+                    Python · TypeScript
                     <br />
-                    Linux
+                    Docker · Git / GitHub
                     <br />
-                    REST APIs
+                    Kafka · Elasticsearch
                     <br />
-                    CI / CD
+                    PostgreSQL · MySQL
                     <br />
-                    Model Deployment
+                    Pandas · NumPy
+                    <br />
+                    Azure · Supabase
                   </p>
                 </div>
               </div>
@@ -236,17 +219,7 @@ function App() {
           </section>
 
           {/* ====================================
-              03 — WORK EXPERIENCE
-
-              Intentionally empty.
-
-              StoryboardRoom.tsx owns the actual
-              visible 3D wall/cards.
-
-              This section provides:
-              - 100vh of scroll distance
-              - #experience navigation anchor
-              - camera progression
+              03 — EXPERIENCE
           ==================================== */}
 
           <section
@@ -257,13 +230,6 @@ function App() {
 
           {/* ====================================
               04 — PROJECTS
-
-              Same idea as Experience.
-
-              Scrolling through this section
-              drives the camera around the
-              corridor and across the Projects
-              storyboard wall.
           ==================================== */}
 
           <section
@@ -271,31 +237,18 @@ function App() {
             id="projects"
             aria-label="Projects"
           />
+
+          {/* ====================================
+              05 — CONTACT / SCREENING ROOM
+          ==================================== */}
+
+          <section
+            className="contact-room-section studio-section"
+            id="contact"
+            aria-label="Contact"
+          />
         </div>
       </div>
-
-      {/* ========================================
-          05 — CONTACT
-
-          Keeping this outside the current
-          3D studio tour for now.
-
-          Later this can become the entrance
-          into the infinity-inspired room.
-      ======================================== */}
-
-      <section
-        className="coming-section"
-        id="contact"
-      >
-        <p>
-          05 / CONTACT
-        </p>
-
-        <h2>
-          That&apos;s a wrap.
-        </h2>
-      </section>
     </main>
   );
 }

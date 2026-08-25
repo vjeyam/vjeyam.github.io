@@ -1,4 +1,5 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+
 import {
   ContactShadows,
   Environment,
@@ -16,10 +17,7 @@ import * as THREE from "three";
 import DirectorChair from "./DirectorChair";
 import SkillsSet from "./SkillsSet";
 import StoryboardRoom from "./StoryboardRoom";
-
-/* ========================================
-   CAMERA HELPERS
-======================================== */
+import ContactStage from "./ContactStage";
 
 function smoothStep(value: number) {
   return value * value * (3 - 2 * value);
@@ -38,47 +36,18 @@ function CameraRig() {
     new THREE.Vector3(0, 1.25, 0),
   );
 
-  /* ======================================
-     01 → 02
-
-     DIRECTOR CHAIR → SKILLS
-
-     DO NOT CHANGE:
-     this is the framing we already like.
-  ====================================== */
-
   const skillsCameraCurve = useMemo(
     () =>
       new THREE.CatmullRomCurve3([
-        new THREE.Vector3(
-          0,
-          2.05,
-          6.3,
-        ),
+        new THREE.Vector3(0, 2.05, 6.3),
 
-        new THREE.Vector3(
-          0.3,
-          2.05,
-          4.8,
-        ),
+        new THREE.Vector3(0.3, 2.05, 4.8),
 
-        new THREE.Vector3(
-          1.7,
-          2.12,
-          2.9,
-        ),
+        new THREE.Vector3(1.7, 2.12, 2.9),
 
-        new THREE.Vector3(
-          3.85,
-          2.2,
-          3.05,
-        ),
+        new THREE.Vector3(3.85, 2.2, 3.05),
 
-        new THREE.Vector3(
-          5.15,
-          2.25,
-          4.65,
-        ),
+        new THREE.Vector3(5.15, 2.25, 4.65),
       ]),
     [],
   );
@@ -86,95 +55,33 @@ function CameraRig() {
   const skillsTargetCurve = useMemo(
     () =>
       new THREE.CatmullRomCurve3([
-        new THREE.Vector3(
-          0,
-          1.25,
-          0,
-        ),
+        new THREE.Vector3(0, 1.25, 0),
 
-        new THREE.Vector3(
-          0.35,
-          1.3,
-          0,
-        ),
+        new THREE.Vector3(0.35, 1.3, 0),
 
-        new THREE.Vector3(
-          1.9,
-          1.22,
-          -0.45,
-        ),
+        new THREE.Vector3(1.9, 1.22, -0.45),
 
-        new THREE.Vector3(
-          4,
-          1.28,
-          -0.9,
-        ),
+        new THREE.Vector3(4, 1.28, -0.9),
 
-        new THREE.Vector3(
-          5.15,
-          1.22,
-          -1,
-        ),
+        new THREE.Vector3(5.15, 1.22, -1),
       ]),
     [],
   );
 
-  /* ======================================
-     02 → 03
-
-     SKILLS → WORK EXPERIENCE
-
-     The important difference:
-
-     Experience is now BEHIND the original
-     Hero camera in positive Z.
-
-     The camera backs away from the desk,
-     rotates around, and enters the gallery.
-  ====================================== */
-
   const experienceCameraCurve = useMemo(
     () =>
       new THREE.CatmullRomCurve3([
-        // exact Skills endpoint
-        new THREE.Vector3(
-          5.15,
-          2.25,
-          4.65,
-        ),
+        new THREE.Vector3(5.15, 2.25, 4.65),
 
-        // back away
-        new THREE.Vector3(
-          5,
-          2.32,
-          5.3,
-        ),
+        new THREE.Vector3(5, 2.32, 5.3),
 
-        // rotate away from desk
-        new THREE.Vector3(
-          4.1,
-          2.35,
-          5.8,
-        ),
+        new THREE.Vector3(4.1, 2.35, 5.8),
 
-        new THREE.Vector3(
-          2.7,
-          2.34,
-          6.2,
-        ),
+        new THREE.Vector3(2.7, 2.34, 6.2),
 
-        new THREE.Vector3(
-          1.3,
-          2.3,
-          6.55,
-        ),
+        new THREE.Vector3(1.3, 2.3, 6.55),
 
-        // final wide Experience framing
-        new THREE.Vector3(
-          0,
-          2.28,
-          6.75,
-        ),
+        new THREE.Vector3(0, 2.28, 6.75),
       ]),
     [],
   );
@@ -182,136 +89,45 @@ function CameraRig() {
   const experienceTargetCurve = useMemo(
     () =>
       new THREE.CatmullRomCurve3([
-        new THREE.Vector3(
-          5.15,
-          1.22,
-          -1,
-        ),
+        new THREE.Vector3(5.15, 1.22, -1),
 
-        new THREE.Vector3(
-          5,
-          1.4,
-          2,
-        ),
+        new THREE.Vector3(5, 1.4, 2),
 
-        new THREE.Vector3(
-          4,
-          1.6,
-          6,
-        ),
+        new THREE.Vector3(4, 1.6, 6),
 
-        new THREE.Vector3(
-          2.7,
-          1.9,
-          9.5,
-        ),
+        new THREE.Vector3(2.7, 1.9, 9.5),
 
-        new THREE.Vector3(
-          1.2,
-          2.25,
-          12,
-        ),
+        new THREE.Vector3(1.2, 2.25, 12),
 
-        // look at Experience wall center
-        new THREE.Vector3(
-          0,
-          2.45,
-          13.15,
-        ),
+        new THREE.Vector3(0, 2.45, 13.15),
       ]),
     [],
   );
 
-  /* ======================================
-     03 → 04
-
-     EXPERIENCE → PROJECTS
-
-     Top-down path:
-
-     Experience ───────────►
-                           │
-                           │
-                           ▼
-                           │
-                           │
-     Projects ◄────────────
-  ====================================== */
-
   const projectsCameraCurve = useMemo(
     () =>
       new THREE.CatmullRomCurve3([
-        // Experience stop
-        new THREE.Vector3(
-          0,
-          2.28,
-          6.75,
-        ),
+        new THREE.Vector3(0, 2.28, 6.75),
 
-        // move right across Experience
-        new THREE.Vector3(
-          1.8,
-          2.3,
-          6.75,
-        ),
+        new THREE.Vector3(1.8, 2.3, 6.75),
 
-        new THREE.Vector3(
-          3.4,
-          2.3,
-          7,
-        ),
+        new THREE.Vector3(3.4, 2.3, 7),
 
-        // approach corridor
-        new THREE.Vector3(
-          4.3,
-          2.31,
-          7.8,
-        ),
+        new THREE.Vector3(4.3, 2.31, 7.8),
 
-        // turn down corridor
-        new THREE.Vector3(
-          4.55,
-          2.32,
-          9.5,
-        ),
+        new THREE.Vector3(4.55, 2.32, 9.5),
 
-        new THREE.Vector3(
-          4.55,
-          2.33,
-          11.5,
-        ),
+        new THREE.Vector3(4.55, 2.33, 11.5),
 
-        new THREE.Vector3(
-          4.55,
-          2.33,
-          13,
-        ),
+        new THREE.Vector3(4.55, 2.33, 13),
 
-        // turn toward Project wall
-        new THREE.Vector3(
-          4.1,
-          2.31,
-          13.55,
-        ),
+        new THREE.Vector3(4.1, 2.31, 13.55),
 
-        new THREE.Vector3(
-          2.8,
-          2.29,
-          13.72,
-        ),
+        new THREE.Vector3(2.8, 2.29, 13.72),
 
-        new THREE.Vector3(
-          1.4,
-          2.28,
-          13.75,
-        ),
+        new THREE.Vector3(1.4, 2.28, 13.75),
 
-        // final wide Projects framing
-        new THREE.Vector3(
-          0,
-          2.28,
-          13.75,
-        ),
+        new THREE.Vector3(0, 2.28, 13.75),
       ]),
     [],
   );
@@ -319,82 +135,84 @@ function CameraRig() {
   const projectsTargetCurve = useMemo(
     () =>
       new THREE.CatmullRomCurve3([
-        // Experience wall
-        new THREE.Vector3(
-          0,
-          2.45,
-          13.15,
-        ),
+        new THREE.Vector3(0, 2.45, 13.15),
 
-        new THREE.Vector3(
-          1.8,
-          2.45,
-          13.15,
-        ),
+        new THREE.Vector3(1.8, 2.45, 13.15),
 
-        new THREE.Vector3(
-          3.4,
-          2.45,
-          13.15,
-        ),
+        new THREE.Vector3(3.4, 2.45, 13.15),
 
-        // corner
-        new THREE.Vector3(
-          4.5,
-          2.4,
-          14,
-        ),
+        new THREE.Vector3(4.5, 2.4, 14),
 
-        // look down corridor
-        new THREE.Vector3(
-          4.6,
-          2.4,
-          16,
-        ),
+        new THREE.Vector3(4.6, 2.4, 16),
 
-        new THREE.Vector3(
-          4.6,
-          2.4,
-          18,
-        ),
+        new THREE.Vector3(4.6, 2.4, 18),
 
-        // reveal Project wall
-        new THREE.Vector3(
-          4.2,
-          2.45,
-          20.15,
-        ),
+        new THREE.Vector3(4.2, 2.45, 20.15),
 
-        new THREE.Vector3(
-          3.2,
-          2.45,
-          20.15,
-        ),
+        new THREE.Vector3(3.2, 2.45, 20.15),
 
-        new THREE.Vector3(
-          2,
-          2.45,
-          20.15,
-        ),
+        new THREE.Vector3(2, 2.45, 20.15),
 
-        new THREE.Vector3(
-          1,
-          2.45,
-          20.15,
-        ),
+        new THREE.Vector3(1, 2.45, 20.15),
 
-        new THREE.Vector3(
-          0,
-          2.45,
-          20.15,
-        ),
+        new THREE.Vector3(0, 2.45, 20.15),
       ]),
     [],
   );
 
-  /* ======================================
-     FRAME UPDATE
-  ====================================== */
+  const contactCameraCurve = useMemo(
+    () =>
+      new THREE.CatmullRomCurve3([
+        // Project wall framing
+        new THREE.Vector3(0, 2.28, 13.75),
+
+        // move toward right side
+        new THREE.Vector3(2.1, 2.3, 13.8),
+
+        new THREE.Vector3(3.9, 2.32, 14.4),
+
+        // follow wall toward exit opening
+        new THREE.Vector3(4.75, 2.34, 16.2),
+
+        new THREE.Vector3(5.05, 2.34, 18.2),
+
+        // pass through doorway
+        new THREE.Vector3(5.8, 2.35, 19.2),
+
+        // enter screening room
+        new THREE.Vector3(6.8, 2.36, 20.05),
+
+        new THREE.Vector3(7.7, 2.36, 20.15),
+
+        // final end-credits framing
+        new THREE.Vector3(8.35, 2.35, 20.15),
+      ]),
+    [],
+  );
+
+  const contactTargetCurve = useMemo(
+    () =>
+      new THREE.CatmullRomCurve3([
+        new THREE.Vector3(0, 2.45, 20.15),
+
+        new THREE.Vector3(2.4, 2.45, 20.15),
+
+        new THREE.Vector3(4.1, 2.4, 20),
+
+        new THREE.Vector3(5.3, 2.4, 19.4),
+
+        new THREE.Vector3(6.3, 2.4, 19.5),
+
+        new THREE.Vector3(8, 2.45, 20.05),
+
+        new THREE.Vector3(10.5, 2.5, 20.15),
+
+        new THREE.Vector3(12.2, 2.55, 20.15),
+
+        new THREE.Vector3(13.7, 2.62, 20.15),
+      ]),
+    [],
+  );
 
   useFrame(() => {
     const viewportHeight =
@@ -417,9 +235,7 @@ function CameraRig() {
     let position: THREE.Vector3;
     let target: THREE.Vector3;
 
-    /* ====================================
-       HERO → SKILLS
-    ==================================== */
+    /* HERO → SKILLS */
 
     if (s <= 1) {
       const raw =
@@ -433,19 +249,13 @@ function CameraRig() {
         smoothStep(raw);
 
       position =
-        skillsCameraCurve.getPointAt(
-          p,
-        );
+        skillsCameraCurve.getPointAt(p);
 
       target =
-        skillsTargetCurve.getPointAt(
-          p,
-        );
+        skillsTargetCurve.getPointAt(p);
     }
 
-    /* ====================================
-       SKILLS → EXPERIENCE
-    ==================================== */
+    /* SKILLS → EXPERIENCE */
 
     else if (s <= 2) {
       const raw =
@@ -459,21 +269,15 @@ function CameraRig() {
         smoothStep(raw);
 
       position =
-        experienceCameraCurve.getPointAt(
-          p,
-        );
+        experienceCameraCurve.getPointAt(p);
 
       target =
-        experienceTargetCurve.getPointAt(
-          p,
-        );
+        experienceTargetCurve.getPointAt(p);
     }
 
-    /* ====================================
-       EXPERIENCE → PROJECTS
-    ==================================== */
+    /* EXPERIENCE → PROJECTS */
 
-    else {
+    else if (s <= 3) {
       const raw =
         THREE.MathUtils.clamp(
           (s - 2.03) / 0.94,
@@ -485,27 +289,41 @@ function CameraRig() {
         smoothStep(raw);
 
       position =
-        projectsCameraCurve.getPointAt(
-          p,
-        );
+        projectsCameraCurve.getPointAt(p);
 
       target =
-        projectsTargetCurve.getPointAt(
-          p,
-        );
+        projectsTargetCurve.getPointAt(p);
     }
 
-    /*
-     * Keep the mouse movement that made
-     * Hero / Skills feel alive.
-     *
-     * Reduce it in Resume room because
-     * the text needs to stay readable.
-     */
-    const pointerStrength =
-      s < 1.8
-        ? 1
-        : 0.3;
+    /* PROJECTS → CONTACT */
+
+    else {
+      const raw =
+        THREE.MathUtils.clamp(
+          (s - 3.03) / 0.94,
+          0,
+          1,
+        );
+
+      const p =
+        smoothStep(raw);
+
+      position =
+        contactCameraCurve.getPointAt(p);
+
+      target =
+        contactTargetCurve.getPointAt(p);
+    }
+
+    let pointerStrength = 1;
+
+    if (s >= 1.8) {
+      pointerStrength = 0.3;
+    }
+
+    if (s >= 3) {
+      pointerStrength = 0.12;
+    }
 
     position.x +=
       pointer.x *
@@ -536,7 +354,7 @@ function CameraRig() {
 }
 
 /* ========================================
-   EXISTING DARK WOOD BACKDROP
+   DARK WOOD BACKDROP
 ======================================== */
 
 function BackdropWall() {
@@ -547,20 +365,10 @@ function BackdropWall() {
 
   return (
     <group
-      position={[
-        0.6,
-        2.4,
-        -4.4,
-      ]}
+      position={[0.6, 2.4, -4.4]}
     >
       <mesh receiveShadow>
-        <boxGeometry
-          args={[
-            11.5,
-            5.8,
-            0.18,
-          ]}
-        />
+        <boxGeometry args={[11.5, 5.8, 0.18]} />
 
         <meshStandardMaterial
           color="#0d0908"
@@ -571,25 +379,16 @@ function BackdropWall() {
 
       {slats.map((i) => {
         const x =
-          -5.1 + i * 0.68;
+          -5.1 +
+          i * 0.68;
 
         return (
           <mesh
             key={i}
-            position={[
-              x,
-              0,
-              0.11,
-            ]}
+            position={[x, 0, 0.11]}
             receiveShadow
           >
-            <boxGeometry
-              args={[
-                0.08,
-                5.8,
-                0.04,
-              ]}
-            />
+            <boxGeometry args={[0.08, 5.8, 0.04]} />
 
             <meshStandardMaterial
               color="#16100d"
@@ -604,19 +403,15 @@ function BackdropWall() {
 }
 
 /* ========================================
-   EXISTING CHAIR / SKILLS LIGHTING
+   HERO / SKILLS LIGHTING
 ======================================== */
 
 function Lighting() {
   const keyLight =
-    useRef<THREE.SpotLight>(
-      null,
-    );
+    useRef<THREE.SpotLight>(null);
 
   useFrame(({ clock }) => {
-    if (
-      !keyLight.current
-    ) {
+    if (!keyLight.current) {
       return;
     }
 
@@ -631,19 +426,13 @@ function Lighting() {
 
   return (
     <>
-      <ambientLight
-        intensity={0.12}
-      />
+      <ambientLight intensity={0.12} />
 
       {/* CHAIR */}
 
       <spotLight
         ref={keyLight}
-        position={[
-          0.45,
-          5.2,
-          3.1,
-        ]}
+        position={[0.45, 5.2, 3.1]}
         angle={0.42}
         penumbra={0.95}
         intensity={56}
@@ -652,11 +441,7 @@ function Lighting() {
       />
 
       <spotLight
-        position={[
-          -2.8,
-          3.6,
-          1.8,
-        ]}
+        position={[-2.8, 3.6, 1.8]}
         angle={0.55}
         penumbra={1}
         intensity={8}
@@ -664,21 +449,13 @@ function Lighting() {
       />
 
       <pointLight
-        position={[
-          0.2,
-          1.3,
-          2.1,
-        ]}
+        position={[0.2, 1.3, 2.1]}
         intensity={3.2}
         color="#ff875f"
       />
 
       <spotLight
-        position={[
-          0.6,
-          4.2,
-          -1.6,
-        ]}
+        position={[0.6, 4.2, -1.6]}
         angle={0.85}
         penumbra={1}
         intensity={7}
@@ -688,11 +465,7 @@ function Lighting() {
       {/* SKILLS */}
 
       <spotLight
-        position={[
-          5.15,
-          6.4,
-          3,
-        ]}
+        position={[5.15, 6.4, 3]}
         angle={0.52}
         penumbra={0.92}
         intensity={34}
@@ -701,21 +474,13 @@ function Lighting() {
       />
 
       <pointLight
-        position={[
-          4.3,
-          2.35,
-          1,
-        ]}
+        position={[4.3, 2.35, 1]}
         intensity={7}
         color="#526dff"
       />
 
       <pointLight
-        position={[
-          6.5,
-          1.65,
-          0,
-        ]}
+        position={[6.5, 1.65, 0]}
         intensity={6.5}
         color="#ff563d"
       />
@@ -732,49 +497,22 @@ function SoundStage() {
     <>
       <color
         attach="background"
-        args={[
-          "#040404",
-        ]}
+        args={["#040404"]}
       />
 
       <fog
         attach="fog"
-        args={[
-          "#040404",
-          9,
-          38,
-        ]}
+        args={["#040404", 9, 42]}
       />
 
       <Lighting />
 
-      {/* ==================================
-          LARGE CONTINUOUS FLOOR
-
-          Extended into positive Z so the
-          Resume gallery sits on the same
-          physical studio floor.
-      ================================== */}
-
       <mesh
-        rotation={[
-          -Math.PI / 2,
-          0,
-          0,
-        ]}
-        position={[
-          0,
-          -0.58,
-          5,
-        ]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[4, -0.58, 8]}
         receiveShadow
       >
-        <planeGeometry
-          args={[
-            70,
-            70,
-          ]}
-        />
+        <planeGeometry args={[80, 80]} />
 
         <meshStandardMaterial
           color="#070707"
@@ -785,26 +523,11 @@ function SoundStage() {
 
       <BackdropWall />
 
-      {/* ==================================
-          HERO
+      {/* HERO */}
 
-          unchanged
-      ================================== */}
-
-      <mesh
-        position={[
-          0,
-          -0.5,
-          0,
-        ]}
-      >
+      <mesh position={[0, -0.5, 0]}>
         <cylinderGeometry
-          args={[
-            2.8,
-            3.05,
-            0.16,
-            64,
-          ]}
+          args={[2.8, 3.05, 0.16, 64]}
         />
 
         <meshStandardMaterial
@@ -816,72 +539,45 @@ function SoundStage() {
 
       <Float
         speed={0.65}
-        rotationIntensity={
-          0.03
-        }
-        floatIntensity={
-          0.04
-        }
+        rotationIntensity={0.03}
+        floatIntensity={0.04}
       >
         <DirectorChair
-          position={[
-            0.5,
-            -0.42,
-            0,
-          ]}
-          rotation={[
-            0,
-            -0.18,
-            0,
-          ]}
+          position={[0.5, -0.42, 0]}
+          rotation={[0, -0.18, 0]}
           scale={1.18}
         />
       </Float>
 
       <ContactShadows
-        position={[
-          0,
-          -0.4,
-          0,
-        ]}
+        position={[0, -0.4, 0]}
         opacity={0.7}
         scale={7}
         blur={2.6}
         far={5}
       />
 
-      {/* ==================================
-          SKILLS
-
-          unchanged
-      ================================== */}
+      {/* SKILLS */}
 
       <SkillsSet />
 
       <ContactShadows
-        position={[
-          5.15,
-          -0.4,
-          -1,
-        ]}
+        position={[5.15, -0.4, -1]}
         opacity={0.62}
         scale={7.4}
         blur={2.4}
         far={5}
       />
 
-      {/* ==================================
-          RESUME GALLERY
-
-          Completely behind original
-          Hero camera.
-      ================================== */}
+      {/* EXPERIENCE + PROJECTS */}
 
       <StoryboardRoom />
 
-      <Environment
-        preset="warehouse"
-      />
+      {/* FINAL SCREENING ROOM */}
+
+      <ContactStage />
+
+      <Environment preset="warehouse" />
 
       <CameraRig />
     </>
@@ -897,27 +593,17 @@ export default function StudioScene() {
     <div className="canvas-container">
       <Canvas
         shadows
-        dpr={[
-          1,
-          1.75,
-        ]}
+        dpr={[1, 1.75]}
         camera={{
-          position: [
-            0,
-            2.05,
-            6.3,
-          ],
+          position: [0, 2.05, 6.3],
           fov: 38,
         }}
         gl={{
           antialias: true,
-          powerPreference:
-            "high-performance",
+          powerPreference: "high-performance",
         }}
       >
-        <Suspense
-          fallback={null}
-        >
+        <Suspense fallback={null}>
           <SoundStage />
         </Suspense>
       </Canvas>

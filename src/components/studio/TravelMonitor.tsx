@@ -115,7 +115,7 @@ export default function TravelMonitor({
 
                 <button
                   className="travel-monitor__power-button"
-                  onClick={() => setView("off")}
+                  onClick={turnOff}
                   aria-label="Turn off monitor"
                 >
                   ⏻
@@ -195,11 +195,24 @@ export default function TravelMonitor({
               />
 
               <div className="travel-monitor__viewer-top">
-                <button onClick={() => setView("album")}>← Canada</button>
+                <button
+                  onClick={() => setView("album")}
+                  aria-label="Back to Canada album"
+                >
+                  ← Canada
+                </button>
 
                 <span>
                   {activePhoto + 1} / {canadaPhotos.length}
                 </span>
+
+                <button
+                  className="travel-monitor__viewer-power"
+                  onClick={turnOff}
+                  aria-label="Turn off monitor"
+                >
+                  ⏻
+                </button>
               </div>
 
               <div className="travel-monitor__viewer-controls">

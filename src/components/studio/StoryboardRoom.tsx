@@ -9,91 +9,61 @@ import "../../styles/StoryboardRoom.css";
 const workExperience = [
   {
     number: "01",
-
-    organization:
-      "University of Arkansas",
-
-    role:
-      "Graduate Research · SAFE Lab",
-
-    date:
-      "2025 — Present",
-
+    organization: "University of Arkansas",
+    role: "AI Graduate Research | SAFE Lab",
+    date: "May 2025 — Present",
     description:
-      "Graduate research across computer science, machine learning, computer vision, and smart agriculture.",
+      "Leading AI and computer vision research across autonomous robotics and smart agriculture, building YOLO-based perception pipelines, multimodal datasets, and ROS-integrated systems.",
   },
 
   {
     number: "02",
-
-    organization:
-      "Washington State University",
-
-    role:
-      "Research Experience",
-
-    date:
-      "Summer 2024",
-
+    organization: "Washington State University",
+    role: "Research Intern",
+    date: "Jun 2024 — Aug 2024",
     description:
-      "Developed computer-vision workflows using multispectral imagery for agricultural phenotyping and yield analysis.",
+      "Developed computer vision pipelines for wheat health and yield prediction using 7,000+ NIR/RGB images, YOLO segmentation, vegetation indices, and automated radiometric calibration.",
   },
 
   {
     number: "03",
-
-    organization:
-      "Arkansas Blue Cross & Blue Shield",
-
-    role:
-      "Software Engineering Intern",
-
-    date:
-      "Summer 2023",
-
+    organization: "Arkansas Blue Cross and Blue Shield",
+    role: "Software Engineer Intern",
+    date: "Jun 2023 — Aug 2023",
     description:
-      "Worked on software and data-integration systems using Python and production engineering tools.",
+      "Built distributed data pipelines with Python, Kafka, PostgreSQL, and Elasticsearch to automate real-time ingestion, aggregation, and cross-team data access.",
   },
 ];
 
 const projects = [
   {
     number: "01",
-
-    title:
-      "Wheat Yield Prediction",
-
-    stack:
-      "Computer Vision · PyTorch · UAV Imagery",
-
+    title: "LLM Model Optimization",
+    stack: "Python · Ollama · Qwen2.5 · Hugging Face",
     description:
-      "Machine-learning and computer-vision pipeline for analyzing agricultural imagery and predicting crop performance.",
+      "Benchmarked Qwen2.5-7B across multiple quantization levels to measure accuracy, latency, throughput, and model size, identifying Q4_K_M as the best performance-efficiency tradeoff.",
+    github:
+      "https://github.com/vjeyam/llm-quant-tradeoffs",
   },
 
   {
     number: "02",
-
-    title:
-      "Accident Severity Prediction",
-
-    stack:
-      "XGBoost · Scikit-learn · Pandas",
-
+    title: "Plant CV",
+    stack: "Python · YOLOv11 · Ultralytics · Computer Vision",
     description:
-      "Multi-class machine-learning system for predicting U.S. traffic accident severity from large-scale structured data.",
+      "Built a real-time segmentation pipeline to distinguish yellow and green plants for an autonomous robotics competition, achieving 92.6% mask mAP@50 and helping the team place 2nd of 7.",
+    github:
+      "https://github.com/vjeyam/plant-cv",
   },
 
   {
     number: "03",
-
-    title:
-      "Sports Market Efficiency",
-
-    stack:
-      "Python · ETL · SQLite · Streamlit",
-
+    title: "WSU Wheat Predictions",
+    stack: "Python · YOLOv8 · OpenCV · NIR/RGB Imagery",
     description:
-      "Data pipeline and analytics platform for studying sportsbook prices, calibration, and market behavior.",
+      "Developed a computer vision pipeline that extracts vegetation indices from multispectral crop imagery to assess wheat health and support higher-yield breeding decisions.",
+    github:
+      "https://github.com/vjeyam/WSU-Wheat-Predictions",
   },
 ];
 
@@ -256,10 +226,6 @@ function ExperienceWall() {
           experience,
           index,
         ) => {
-          /*
-           * Compact enough that all three
-           * cards fit inside one camera frame.
-           */
           const x =
             -2.4 +
             index * 2.4;
@@ -518,32 +484,20 @@ function ProjectWall() {
 ======================================== */
 
 function Corridor() {
-  const slats =
-    Array.from(
-      {
-        length: 8,
-      },
-      (_, index) =>
-        index,
-    );
+  const slats = Array.from(
+    {
+      length: 6,
+    },
+    (_, index) => index,
+  );
 
   return (
     <group>
       <mesh
-        position={[
-          5.4,
-          2.5,
-          16.65,
-        ]}
+        position={[5.4, 2.5, 15.55]}
         receiveShadow
       >
-        <boxGeometry
-          args={[
-            0.22,
-            5.8,
-            7.2,
-          ]}
-        />
+        <boxGeometry args={[0.22, 5.8, 5.15]} />
 
         <meshStandardMaterial
           color="#0d0b0a"
@@ -551,47 +505,40 @@ function Corridor() {
         />
       </mesh>
 
-      {slats.map(
-        (index) => {
-          const z =
-            13.7 +
-            index * 0.78;
+      {slats.map((index) => {
+        const z =
+          13.45 +
+          index * 0.78;
 
-          return (
-            <mesh
-              key={index}
-              position={[
-                5.27,
-                2.5,
-                z,
-              ]}
-            >
-              <boxGeometry
-                args={[
-                  0.045,
-                  5.5,
-                  0.08,
-                ]}
-              />
+        return (
+          <mesh
+            key={index}
+            position={[5.27, 2.5, z]}
+          >
+            <boxGeometry args={[0.045, 5.5, 0.08]} />
 
-              <meshStandardMaterial
-                color="#1a1411"
-                roughness={0.9}
-              />
-            </mesh>
-          );
-        },
-      )}
+            <meshStandardMaterial
+              color="#1a1411"
+              roughness={0.9}
+            />
+          </mesh>
+        );
+      })}
 
+      {/* subtle light leading toward exit */}
       <pointLight
-        position={[
-          4.45,
-          3.2,
-          16.4,
-        ]}
+        position={[4.45, 3.2, 16.4]}
         intensity={4}
         color="#ff6c4e"
         distance={7}
+      />
+
+      {/* doorway / exit edge light */}
+      <pointLight
+        position={[5.65, 2.8, 19]}
+        intensity={3.2}
+        color="#b94c3a"
+        distance={5}
       />
     </group>
   );

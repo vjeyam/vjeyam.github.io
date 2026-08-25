@@ -449,15 +449,33 @@
 
   padding: 9px 10px;
 
-  display: flex;
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
   align-items: center;
-  justify-content: space-between;
 
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.7),
     transparent
   );
+}
+
+.travel-monitor__viewer-top > :last-child {
+  justify-self: end;
+}
+
+.travel-monitor__viewer-power {
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.travel-monitor__viewer-power:hover {
+  color: #ff563d;
+
+  transform: scale(1.08);
 }
 
 .travel-monitor__viewer-top button,

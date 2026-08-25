@@ -32,10 +32,6 @@ function useFabricTexture() {
       return new THREE.Texture();
     }
 
-    /*
-     * Neutral gray because this is being used as a
-     * bump map rather than as the actual cushion color.
-     */
     context.fillStyle = "#777777";
     context.fillRect(0, 0, size, size);
 
@@ -113,29 +109,6 @@ type CushionProps = {
 function ChairCushion({
   fabricTexture,
 }: CushionProps) {
-  const columns = [
-    -0.48,
-    -0.16,
-    0.16,
-    0.48,
-  ];
-
-  const rows = [
-    -0.28,
-    0,
-    0.28,
-  ];
-
-  const buttonColumns = [
-    -0.32,
-    0,
-    0.32,
-  ];
-
-  const buttonRows = [
-    -0.14,
-    0.14,
-  ];
 
   return (
     <group
