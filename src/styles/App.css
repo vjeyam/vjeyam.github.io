@@ -1,0 +1,684 @@
+/* ========================================
+   SITE
+======================================== */
+
+.site {
+  width: 100%;
+
+  background: var(--bg);
+}
+
+/* ========================================
+   PERSISTENT 3D STUDIO
+======================================== */
+
+.studio-scroll {
+  position: relative;
+
+  min-height: 500vh;
+
+  background: var(--bg);
+}
+
+.canvas-container {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  z-index: 0;
+
+  pointer-events: auto;
+}
+
+.canvas-container canvas {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  pointer-events: auto;
+}
+
+.studio-content {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: -100vh;
+
+  pointer-events: none;
+}
+
+.studio-section {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  min-height: 700px;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   GLOBAL NAVIGATION
+======================================== */
+
+.nav {
+  position: fixed;
+
+  z-index: 100;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  padding: 30px 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  pointer-events: none;
+}
+
+.nav a {
+  pointer-events: auto;
+}
+
+/* ========================================
+   BRAND
+======================================== */
+
+.brand {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.brand:hover {
+  color: var(--bg);
+
+  background: var(--text);
+
+  border-color: var(--text);
+}
+
+/* ========================================
+   NAV LINKS
+======================================== */
+
+.nav-links {
+  display: flex;
+
+  gap: 34px;
+}
+
+.nav-links a {
+  position: relative;
+
+  color: #ababab;
+
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.nav-links a::before {
+  content: "[";
+
+  margin-right: 6px;
+
+  color: #f1f1f1;
+}
+
+.nav-links a::after {
+  content: "]";
+
+  margin-left: 6px;
+
+  color: #f1f1f1;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+  position: relative;
+
+  height: 100vh;
+
+  min-height: 700px;
+
+  overflow: hidden;
+
+  background: transparent;
+}
+
+/* ========================================
+   HERO COPY
+======================================== */
+
+.hero-copy {
+  position: absolute;
+
+  z-index: 5;
+
+  left: clamp(28px, 7vw, 110px);
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 0.18em;
+
+  color: var(--accent);
+}
+
+.hero-copy h1 {
+  margin: 0;
+
+  font-size: clamp(70px, 9vw, 150px);
+
+  line-height: 0.76;
+
+  letter-spacing: -0.075em;
+
+  font-weight: 300;
+}
+
+.hero-copy h1 span {
+  font-weight: 800;
+}
+
+.hero-description {
+  margin-top: 35px;
+  margin-bottom: 0;
+
+  font-size: clamp(13px, 1.1vw, 17px);
+
+  line-height: 1.65;
+
+  color: #a1a1a1;
+}
+
+/* ========================================
+   HERO SIDE LABEL
+======================================== */
+
+.hero-side-copy {
+  position: absolute;
+
+  z-index: 5;
+
+  right: 42px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 16px;
+
+  font-family: "DM Mono", monospace;
+
+  pointer-events: none;
+}
+
+.hero-side-copy span {
+  font-size: 9px;
+
+  color: var(--accent);
+}
+
+.hero-side-copy p {
+  margin: 0;
+
+  text-align: right;
+
+  font-size: 9px;
+
+  line-height: 1.8;
+
+  letter-spacing: 0.12em;
+
+  color: #8b8b8b;
+}
+
+/* ========================================
+   SCROLL INDICATOR
+======================================== */
+
+.scroll-indicator {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 50%;
+
+  bottom: 26px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 12px;
+
+  font-family: "DM Mono", monospace;
+
+  color: #868686;
+
+  pointer-events: none;
+}
+
+.scroll-indicator p {
+  margin: 0;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+}
+
+.scroll-line {
+  position: relative;
+
+  width: 1px;
+  height: 58px;
+
+  background: rgba(255, 255, 255, 0.16);
+
+  overflow: hidden;
+}
+
+.scroll-line span {
+  position: absolute;
+
+  top: -30%;
+  left: 0;
+
+  width: 100%;
+  height: 30%;
+
+  background: #ffffff;
+
+  animation: scroll-line 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(430%);
+  }
+}
+
+/* ========================================
+   SKILLS / TECHNICAL TOOLKIT
+======================================== */
+
+.skills-section {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+
+  padding: 0;
+
+  background: transparent;
+}
+
+/* ========================================
+   SKILLS HEADING
+======================================== */
+
+.skills-heading {
+  position: absolute;
+
+  z-index: 4;
+
+  left: clamp(70px, 8vw, 150px);
+  top: clamp(130px, 17vh, 180px);
+
+  width: min(350px, 24vw);
+
+  transform: translateY(-40px);
+
+  pointer-events: none;
+}
+
+.section-number {
+  margin: 0 0 14px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.17em;
+
+  color: var(--accent);
+}
+
+.skills-heading h2 {
+  margin: 0;
+
+  font-size: clamp(42px, 4.4vw, 72px);
+
+  line-height: 0.87;
+
+  letter-spacing: -0.065em;
+
+  font-weight: 300;
+}
+
+.skills-heading h2 span {
+  font-weight: 700;
+}
+
+.skills-intro {
+  margin-top: 18px;
+  margin-bottom: 0;
+
+  max-width: 310px;
+
+  font-size: 12px;
+
+  line-height: 1.65;
+
+  color: #8e8e8e;
+}
+
+/* ========================================
+   SKILLS LIST
+======================================== */
+
+.skills-panel {
+  position: absolute;
+  z-index: 4;
+
+  right: clamp(12px, 2vw, 26px);
+  top: 54%;
+
+  transform: translateY(-50%);
+
+  width: min(290px, 21vw);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  pointer-events: auto;
+}
+
+.skill-group {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 12px;
+
+  padding: 15px 15px 15px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+
+  background: rgba(8, 8, 8, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.skill-index {
+  padding-top: 2px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  color: var(--accent);
+
+  letter-spacing: 0.08em;
+}
+
+.skill-group h3 {
+  margin: 0 0 12px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.12em;
+
+  color: #f3f3f3;
+}
+
+.skill-group p {
+  margin: 0;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+
+  line-height: 1.9;
+
+  letter-spacing: 0.02em;
+
+  color: #d0d0d0;
+}
+
+/* ========================================
+   WORKSTATION CAPTION
+======================================== */
+
+.skills-caption {
+  position: absolute;
+
+  z-index: 4;
+
+  bottom: 26px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  gap: 18px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+
+  color: #666666;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   RESUME GALLERY SECTIONS
+======================================== */
+
+.resume-room-section {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  min-height: 700px;
+
+  background: transparent;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   CONTACT / SCREENING ROOM
+======================================== */
+
+.contact-room-section {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  min-height: 700px;
+
+  background: transparent;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   TABLET / SMALL DESKTOP
+======================================== */
+
+@media (max-width: 1100px) {
+  .nav-links {
+    gap: 20px;
+  }
+
+  .skills-heading {
+    left: clamp(180px, 20vw, 270px);
+
+    width: 36vw;
+  }
+
+  .skills-heading h2 {
+    font-size: clamp(38px, 4.7vw, 58px);
+  }
+
+  .skills-panel {
+    width: 240px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 900px) {
+  .nav {
+    padding: 22px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-copy {
+    left: 24px;
+
+    top: auto;
+
+    bottom: 125px;
+
+    transform: none;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(64px, 20vw, 100px);
+  }
+
+  .hero-description {
+    font-size: 12px;
+  }
+
+  .hero-side-copy {
+    display: none;
+  }
+
+  .skills-heading {
+    left: 24px;
+
+    top: 120px;
+
+    width: min(440px, calc(100vw - 48px));
+  }
+
+  .skills-heading h2 {
+    font-size: clamp(44px, 12vw, 68px);
+  }
+
+  .skills-panel {
+    right: 24px;
+
+    top: auto;
+
+    bottom: 70px;
+
+    transform: none;
+
+    width: min(300px, calc(100vw - 48px));
+
+    gap: 18px;
+  }
+
+  .skill-group {
+    padding-top: 10px;
+  }
+
+  .skills-caption {
+    display: none;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-line span {
+    animation: none;
+  }
+}

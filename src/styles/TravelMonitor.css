@@ -1,0 +1,546 @@
+/* ========================================
+   TRAVEL MONITOR
+======================================== */
+
+.travel-monitor-wrapper {
+  pointer-events: auto !important;
+}
+
+.travel-monitor {
+  position: relative;
+
+  width: 320px;
+  height: 192px;
+
+  overflow: hidden;
+
+  border: 8px solid #0b0b0b;
+  border-radius: 4px;
+
+  background: #060606;
+
+  font-family: "DM Mono", monospace;
+  color: #f2f2f2;
+
+  pointer-events: auto;
+}
+
+.travel-monitor button {
+  font: inherit;
+}
+
+.travel-monitor__scanlines {
+  position: absolute;
+  inset: 0;
+
+  z-index: 50;
+
+  pointer-events: none;
+
+  opacity: 0.18;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.035) 0,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+/* ========================================
+   OFF / STANDBY
+======================================== */
+
+.travel-monitor__off {
+  width: 100%;
+  height: 100%;
+
+  padding: 22px;
+
+  border: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 18px;
+
+  color: #8b8b8b;
+  background:
+    radial-gradient(circle at 50% 50%, #101010, #050505 72%);
+
+  cursor: pointer;
+}
+
+.travel-monitor__off p {
+  margin: 0 0 4px;
+
+  font-size: 9px;
+  letter-spacing: 0.14em;
+
+  color: #696969;
+}
+
+.travel-monitor__off strong {
+  font-size: 16px;
+
+  letter-spacing: 0.12em;
+
+  color: #b7b7b7;
+}
+
+.travel-monitor__status-light {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #ff563d;
+
+  box-shadow: 0 0 8px rgba(255, 86, 61, 0.65);
+}
+
+.travel-monitor__power-label {
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+
+  color: #555555;
+}
+
+/* ========================================
+   BOOT
+======================================== */
+
+.travel-monitor__boot {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  background: #050505;
+
+  text-align: center;
+}
+
+.travel-monitor__boot p {
+  margin: 0;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+
+  color: #ff563d;
+}
+
+.travel-monitor__boot strong {
+  font-size: 10px;
+
+  font-weight: 400;
+
+  letter-spacing: 0.08em;
+
+  color: #b4b4b4;
+}
+
+.travel-monitor__boot-bar {
+  width: 110px;
+  height: 2px;
+
+  margin-top: 10px;
+
+  overflow: hidden;
+
+  background: #1b1b1b;
+}
+
+.travel-monitor__boot-bar span {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  background: #ff563d;
+
+  transform-origin: left;
+
+  animation: travel-boot-bar 650ms ease-out forwards;
+}
+
+.travel-monitor__boot-flash {
+  position: absolute;
+  inset: 0;
+
+  background: #ffffff;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation: travel-boot-flash 400ms ease-out;
+}
+
+@keyframes travel-boot-bar {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes travel-boot-flash {
+  0% {
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.5;
+  }
+
+  16% {
+    opacity: 0;
+  }
+
+  28% {
+    opacity: 0.15;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   APP
+======================================== */
+
+.travel-monitor__app {
+  width: 100%;
+  height: 100%;
+
+  padding: 14px;
+
+  background:
+    linear-gradient(135deg, #101010, #080808);
+}
+
+.travel-monitor__header {
+  min-height: 38px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.travel-monitor__header p,
+.travel-monitor__album-heading p {
+  margin: 0 0 2px;
+
+  font-size: 6px;
+
+  letter-spacing: 0.16em;
+
+  color: #6b6b6b;
+}
+
+.travel-monitor__header h4,
+.travel-monitor__album-heading h4 {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 15px;
+  line-height: 1;
+
+  letter-spacing: -0.03em;
+
+  color: #f1f1f1;
+}
+
+.travel-monitor__power-button,
+.travel-monitor__back {
+  border: 0;
+
+  color: #898989;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.travel-monitor__power-button {
+  padding: 2px;
+}
+
+.travel-monitor__back {
+  padding: 2px 0;
+
+  font-size: 7px;
+
+  letter-spacing: 0.08em;
+}
+
+.travel-monitor__section-title {
+  margin: 8px 0 7px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 8px;
+
+  color: #adadad;
+}
+
+.travel-monitor__section-title small {
+  font-size: 6px;
+
+  color: #5f5f5f;
+}
+
+/* ========================================
+   ALBUM CARD
+======================================== */
+
+.travel-monitor__album {
+  width: 105px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.travel-monitor__album img {
+  width: 105px;
+  height: 78px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 5px;
+
+  filter: saturate(0.9);
+}
+
+.travel-monitor__album-info {
+  margin-top: 5px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 1px;
+}
+
+.travel-monitor__album-info strong {
+  font-size: 8px;
+
+  font-weight: 500;
+
+  color: #e5e5e5;
+}
+
+.travel-monitor__album-info span {
+  font-size: 6px;
+
+  color: #686868;
+}
+
+/* ========================================
+   PHOTO GRID
+======================================== */
+
+.travel-monitor__album-heading {
+  margin-left: auto;
+
+  text-align: right;
+}
+
+.travel-monitor__photo-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 4px;
+
+  margin-top: 7px;
+}
+
+.travel-monitor__thumbnail {
+  padding: 0;
+
+  height: 40px;
+
+  overflow: hidden;
+
+  border: 0;
+  border-radius: 3px;
+
+  background: #111111;
+
+  cursor: pointer;
+}
+
+.travel-monitor__thumbnail img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.travel-monitor__thumbnail:hover img {
+  transform: scale(1.05);
+
+  filter: brightness(1.08);
+}
+
+/* ========================================
+   FULL PHOTO VIEW
+======================================== */
+
+.travel-monitor__viewer {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  background: #000000;
+}
+
+.travel-monitor__viewer-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+.travel-monitor__viewer-top {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding: 9px 10px;
+
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    transparent
+  );
+}
+
+.travel-monitor__viewer-top > :last-child {
+  justify-self: end;
+}
+
+.travel-monitor__viewer-power {
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.travel-monitor__viewer-power:hover {
+  color: #ff563d;
+
+  transform: scale(1.08);
+}
+
+.travel-monitor__viewer-top button,
+.travel-monitor__viewer-top span {
+  font-size: 6px;
+
+  color: #dedede;
+}
+
+.travel-monitor__viewer-top button {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.travel-monitor__viewer-controls {
+  position: absolute;
+
+  bottom: 10px;
+  right: 10px;
+
+  display: flex;
+
+  gap: 6px;
+}
+
+.travel-monitor__viewer-controls button {
+  width: 25px;
+  height: 25px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  color: #f1f1f1;
+
+  cursor: pointer;
+
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.travel-monitor__viewer-controls button:hover {
+  background: rgba(255, 255, 255, 0.12);
+
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .travel-monitor__boot-bar span,
+  .travel-monitor__boot-flash {
+    animation: none;
+  }
+}
