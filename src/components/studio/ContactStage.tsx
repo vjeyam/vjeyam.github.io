@@ -20,6 +20,7 @@ function EndCredits() {
       position={[13.63, 2.62, 20.15]}
       rotation={[0, -Math.PI / 2, 0]}
       distanceFactor={4.1}
+      scale={0.5}
       style={{
         pointerEvents: "auto",
       }}
@@ -145,6 +146,7 @@ function ExitSign() {
         position={[-0.05, 0, 0]}
         rotation={[0, -Math.PI / 2, 0]}
         distanceFactor={3.5}
+        scale={0.5}
         style={{
           pointerEvents: "auto",
         }}

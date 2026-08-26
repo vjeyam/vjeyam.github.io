@@ -1,27 +1,57 @@
 /* ========================================
    STORYBOARD / RESUME GALLERY
+
+   Windows / Chrome sharp-text fix:
+   These DOM panels render at 2x CSS resolution and the
+   corresponding <Html> elements use scale={0.5}.
+   This keeps the same apparent 3D size while giving the
+   browser more pixels to rasterize before Three.js scales it.
+======================================== */
+
+.storyboard-room-heading,
+.storyboard-card {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* ========================================
+   HEADING
 ======================================== */
 
 .storyboard-room-heading {
-  width: 340px;
+  width: 680px;
+
+  margin-top: 300px;
 
   text-align: center;
 
-  font-family: "DM Mono", monospace;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
   user-select: none;
   pointer-events: none;
-
-  margin-top: 150px;
 }
 
 .storyboard-room-heading span {
   display: block;
 
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 
-  font-size: 8px;
-  font-weight: 500;
+  font-family:
+    "DM Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 16px;
+  font-weight: 600;
 
   letter-spacing: 0.18em;
 
@@ -31,10 +61,15 @@
 .storyboard-room-heading strong {
   display: block;
 
-  font-family: "Inter", sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-  font-size: 29px;
-  font-weight: 700;
+  font-size: 58px;
+  font-weight: 750;
 
   line-height: 0.95;
 
@@ -43,7 +78,7 @@
   color: #f2eee8;
 
   text-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.4);
+    0 16px 48px rgba(0, 0, 0, 0.4);
 }
 
 /* ========================================
@@ -51,22 +86,22 @@
 ======================================== */
 
 .storyboard-card {
-  width: 210px;
-  min-height: 220px;
+  width: 420px;
+  min-height: 440px;
 
-  padding: 16px;
+  padding: 32px;
 
   display: grid;
 
-  grid-template-columns: 24px 1fr;
+  grid-template-columns: 48px 1fr;
 
-  gap: 10px;
+  gap: 20px;
 
   border:
-    1px solid
+    2px solid
     rgba(255, 255, 255, 0.42);
 
-  border-radius: 2px;
+  border-radius: 4px;
 
   color: #171411;
 
@@ -78,23 +113,33 @@
     );
 
   box-shadow:
-    0 14px 32px
+    0 28px 64px
       rgba(0, 0, 0, 0.32),
-    inset 0 1px 0
+    inset 0 2px 0
       rgba(255, 255, 255, 0.5);
 
-  font-family: "DM Mono", monospace;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
   user-select: none;
-
   pointer-events: none;
 }
 
 .storyboard-card__number {
-  padding-top: 2px;
+  padding-top: 4px;
 
-  font-size: 8px;
-  font-weight: 500;
+  font-family:
+    "DM Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 16px;
+  font-weight: 700;
 
   letter-spacing: 0.06em;
 
@@ -102,12 +147,17 @@
 }
 
 .storyboard-card__body h3 {
-  margin: 0 0 9px;
+  margin: 0 0 18px;
 
-  font-family: "Inter", sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 750;
 
   line-height: 1.08;
 
@@ -117,13 +167,21 @@
 }
 
 .storyboard-card__subtitle {
-  margin: 0 0 13px;
+  margin: 0 0 26px;
 
-  font-size: 7px;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 15px;
+  font-weight: 550;
 
   line-height: 1.55;
 
-  letter-spacing: 0.035em;
+  letter-spacing: 0.015em;
 
   color: #5e554e;
 }
@@ -131,26 +189,53 @@
 .storyboard-card__description {
   margin: 0;
 
-  font-size: 7px;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 15px;
+  font-weight: 500;
 
   line-height: 1.68;
+
+  letter-spacing: 0;
 
   color: #3c3631;
 }
 
+/* ========================================
+   RESPONSIVE
+======================================== */
+
 @media (max-width: 900px) {
   .storyboard-card {
-    width: 190px;
-    min-height: 205px;
+    width: 380px;
+    min-height: 410px;
 
-    padding: 14px;
+    padding: 28px;
+
+    grid-template-columns: 44px 1fr;
+
+    gap: 18px;
+  }
+
+  .storyboard-card__body h3 {
+    font-size: 26px;
+  }
+
+  .storyboard-card__subtitle,
+  .storyboard-card__description {
+    font-size: 14px;
   }
 
   .storyboard-room-heading {
-    width: 290px;
+    width: 580px;
   }
 
   .storyboard-room-heading strong {
-    font-size: 25px;
+    font-size: 50px;
   }
 }

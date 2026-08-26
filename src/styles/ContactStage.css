@@ -1,27 +1,58 @@
-/* Contact Credits */
-.contact-credits {
-  width: 470px;
+/* ========================================
+   CONTACT / END CREDITS
 
-  padding: 42px 38px 34px;
+   Windows / Chrome sharp-text fix:
+   This panel renders at 2x CSS resolution and its
+   corresponding <Html> uses scale={0.5}.
+======================================== */
+
+.contact-credits,
+.contact-exit {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* ========================================
+   CONTACT CREDITS
+======================================== */
+
+.contact-credits {
+  width: 940px;
+
+  padding: 84px 76px 68px;
 
   color: #171717;
 
-  font-family: "DM Mono", monospace;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
   user-select: none;
 }
 
 .contact-credits__header {
-  padding-top: 4px;
+  padding-top: 8px;
 }
 
 .contact-credits__eyebrow {
-  margin: 0 0 11px;
+  margin: 0 0 22px;
 
-  font-size: 7px;
-  font-weight: 500;
+  font-family:
+    "DM Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
 
-  letter-spacing: 0.2em;
+  font-size: 16px;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
 
   color: #b64a3b;
 }
@@ -29,33 +60,48 @@
 .contact-credits h2 {
   margin: 0;
 
-  font-family: "Inter", sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-  font-size: 48px;
-  font-weight: 700;
+  font-size: 96px;
+  font-weight: 750;
 
   line-height: 0.82;
 
-  letter-spacing: -0.065em;
+  letter-spacing: -0.055em;
 
   color: #111111;
 }
 
 .contact-credits__subhead {
-  margin: 14px 0 0;
+  margin: 28px 0 0;
 
-  font-size: 6px;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-  letter-spacing: 0.1em;
+  font-size: 15px;
+  font-weight: 500;
 
-  color: #77716b;
+  line-height: 1.45;
+
+  letter-spacing: 0.025em;
+
+  color: #69645f;
 }
 
 .contact-credits__divider {
   width: 100%;
-  height: 1px;
+  height: 2px;
 
-  margin: 22px 0 22px;
+  margin: 44px 0;
 
   background: rgba(0, 0, 0, 0.2);
 }
@@ -64,23 +110,37 @@
   display: flex;
   flex-direction: column;
 
-  gap: 5px;
+  gap: 10px;
 
-  margin-bottom: 26px;
+  margin-bottom: 52px;
 }
 
 .contact-credits__identity span {
-  font-size: 11px;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 700;
 
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
 }
 
 .contact-credits__identity small {
-  font-size: 7px;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-  letter-spacing: 0.1em;
+  font-size: 15px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
 
   color: #68625c;
 }
@@ -90,27 +150,44 @@
 
   grid-template-columns: 1fr 1fr;
 
-  gap: 22px 24px;
+  gap: 44px 48px;
 }
 
 .contact-credits__grid > div {
   display: flex;
   flex-direction: column;
 
-  gap: 5px;
+  gap: 12px;
 }
 
 .contact-credits__label {
-  font-size: 6px;
+  font-family:
+    "DM Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
 
-  letter-spacing: 0.16em;
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
 
   color: #a34234;
 }
 
 .contact-credits__grid a,
 .contact-credits__grid > div > span:last-child {
-  font-size: 8px;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 18px;
+  font-weight: 550;
+
+  letter-spacing: -0.01em;
 
   color: #24211f;
 }
@@ -121,6 +198,8 @@
   width: fit-content;
 
   pointer-events: auto;
+
+  text-decoration: none;
 
   transition:
     color 160ms ease,
@@ -134,9 +213,9 @@
 
   left: 0;
   right: 0;
-  bottom: -2px;
+  bottom: -4px;
 
-  height: 1px;
+  height: 2px;
 
   background: #bd4737;
 
@@ -149,7 +228,7 @@
 .contact-credits__grid a:hover {
   color: #a53628;
 
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .contact-credits__grid a:hover::after {
@@ -157,40 +236,56 @@
 }
 
 .contact-credits__footer {
-  margin-top: 28px;
-  padding-top: 14px;
+  margin-top: 56px;
+  padding-top: 28px;
 
   display: flex;
   justify-content: space-between;
 
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 2px solid rgba(0, 0, 0, 0.15);
 
-  font-size: 5px;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 550;
+
+  letter-spacing: 0.08em;
 
   color: #7b746d;
 }
 
-/* Exit */
+/* ========================================
+   EXIT
+======================================== */
+
 .contact-exit {
-  padding: 7px 17px;
+  padding: 14px 34px;
 
   border: 0;
 
-  font-family: "DM Mono", monospace;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 700;
 
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
 
   color: #ffc2b7;
 
   background: transparent;
 
   text-shadow:
-    0 0 10px rgba(255, 74, 48, 0.65);
+    0 0 20px rgba(255, 74, 48, 0.65);
 
   cursor: pointer;
 
@@ -205,5 +300,5 @@
   color: #ffffff;
 
   text-shadow:
-    0 0 16px rgba(255, 86, 61, 0.95);
+    0 0 32px rgba(255, 86, 61, 0.95);
 }

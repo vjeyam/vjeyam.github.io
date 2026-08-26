@@ -204,6 +204,7 @@ function ExperienceWall() {
           0,
         ]}
         distanceFactor={3}
+        scale={0.5}
         style={{
           pointerEvents: "none",
         }}
@@ -248,6 +249,7 @@ function ExperienceWall() {
                 0,
               ]}
               distanceFactor={3.5}
+              scale={0.5}
               style={{
                 pointerEvents:
                   "none",
@@ -387,6 +389,7 @@ function ProjectWall() {
           0,
         ]}
         distanceFactor={3.5}
+        scale={0.5}
         style={{
           pointerEvents: "none",
         }}
@@ -431,6 +434,7 @@ function ProjectWall() {
                 0,
               ]}
               distanceFactor={3.5}
+              scale={0.5}
               style={{
                 pointerEvents:
                   "none",
